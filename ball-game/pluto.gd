@@ -2,11 +2,11 @@ extends RigidBody2D
 
 # --- PLUTO SETTINGS ---
 @export var planet_name: String = "Pluto"
-@export var planet_speed: float = 10000.0 # Pluto is fast!
+@export var planet_speed: float = 1000.0 # Pluto is fast!
 @export var max_health: float = 300.0    # But fragile.
 @export var rotation_speed: float = 4.0  # Spins faster
 @export var radius: float = 90.0
-@export var damage_multiplier: float = 0.01 # Balanced for 1000+ speeds
+@export var damage_multiplier: float = 0.001 # Balanced for 1000+ speeds
 
 # --- INTERNAL STATE ---
 var current_health: float
@@ -59,7 +59,7 @@ func _draw():
 	var bar_pos = Vector2(-bar_width / 2, -radius - 30) 
 	
 	draw_rect(Rect2(bar_pos, Vector2(bar_width, bar_height)), Color.BLACK)
-	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, bar_height)), Color.CYAN.lerp(Color.WHITE, 1.0 - hp_pct))
+	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, bar_height)), Color.GOLD.lerp(Color.RED, 1.0 - hp_pct))
 
 func take_damage(amount: float):
 	current_health -= amount
@@ -88,7 +88,7 @@ func _on_body_entered(body):
 			
 			print("PLUTO SELF-POWERED HIT! Damage: ", int(calculated_damage))
 			
-			body.take_damage(calculated_damage)
+			body.take_damage(calculated_damage + (max_health-current_health))
 			apply_hit_stop(0.08)
 			flash_timer = 0.2
 			

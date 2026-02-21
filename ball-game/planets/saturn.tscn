@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://din1ec7v5mc3t"]
+[gd_scene format=3 uid="uid://bqimp0qy231j5"]
 
-[ext_resource type="Script" uid="uid://g57hjouxkorr" path="res://pluto.gd" id="1_hklr6"]
-[ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="2_q3ec0"]
+[ext_resource type="Script" uid="uid://bevtd6akhoisp" path="res://saturn.gd" id="1_nrygb"]
+[ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="2_6y7jd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
 friction = 0.0
@@ -11,34 +11,40 @@ bounce = 1.0
 radius = 146.66666
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_em3ml"]
-size = Vector2(147.49998, 295)
+size = Vector2(342.5, 680)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nrygb"]
+radius = 296.81644
 
 [node name="Ball2" type="RigidBody2D" unique_id=612661867]
-mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_cbx31")
 gravity_scale = 0.0
 continuous_cd = 2
 linear_damp_mode = 1
 angular_damp_mode = 1
-script = ExtResource("1_hklr6")
-planet_speed = 500.0
-radius = 180.0
-damage_multiplier = 0.0001
+script = ExtResource("1_nrygb")
 
 [node name="circleshape2d" type="CollisionShape2D" parent="." unique_id=40652161]
-scale = Vector2(0.6, 0.6)
+scale = Vector2(1.4, 1.4)
 shape = SubResource("CircleShape2D_em3ml")
 
 [node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
-texture = ExtResource("2_q3ec0")
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_6y7jd")
 
 [node name="weaponhitbox" type="Area2D" parent="." unique_id=596913455]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weaponhitbox" unique_id=881282358]
-position = Vector2(44.750004, 0.5)
+position = Vector2(103.25, 1.9999962)
 scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_em3ml")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1516143382]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1944874623]
+shape = SubResource("CircleShape2D_nrygb")
+debug_color = Color(0.89467824, 0.3202344, 0, 0.41960785)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="weaponhitbox" to="." method="_on_weaponhitbox_body_entered"]

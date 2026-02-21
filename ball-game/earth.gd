@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var planet_name: String = "Earth"
 @export var planet_speed: float = 500.0
 @export var max_health: float = 300.0 
-@export var radius: float = 180.0
+@export var radius: float = 190.0
 @export var damage_multiplier: float = 0.0001 # Tune this to scale difficulty
 
 # --- MOON SETTINGS ---
@@ -111,5 +111,7 @@ func _draw():
 	draw_arc(Vector2.ZERO, radius + 15, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 10.0)
 	var hp_pct = clamp(current_health / max_health, 0.0, 1.0)
 	var bar_pos = Vector2(-75, -radius - 70) 
-	draw_rect(Rect2(bar_pos, Vector2(150, 15)), Color.BLACK)
-	draw_rect(Rect2(bar_pos, Vector2(150 * hp_pct, 15)), Color.GREEN.lerp(Color.RED, 1.0 - hp_pct))
+	var bar_width = 100
+	var bar_height = 10
+	draw_rect(Rect2(bar_pos, Vector2(bar_width, bar_height)), Color.BLACK)
+	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, bar_height)), Color.GOLD.lerp(Color.RED, 1.0 - hp_pct))
