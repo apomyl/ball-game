@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c5clfb81rvk3v"]
+
+[ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="1_lotrb"]
+[ext_resource type="Script" uid="uid://ds05vrvc0rtms" path="res://ui/creation.gd" id="1_vusna"]
+[ext_resource type="Texture2D" uid="uid://dh6nngnb864rd" path="res://icon.svg" id="2_shs6h"]
+
+[node name="Creation" type="Control" unique_id=866555154]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_vusna")
+
+[node name="SliderContainer" type="VBoxContainer" parent="." unique_id=760379179]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 125.0
+offset_right = 685.0
+offset_bottom = 693.0
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SliderContainer" unique_id=1893297790]
+layout_mode = 2
+theme = ExtResource("1_lotrb")
+text = "asdf"
+fit_content = true
+
+[node name="HSlider" type="HSlider" parent="SliderContainer" unique_id=999440617]
+layout_mode = 2
+theme = ExtResource("1_lotrb")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SliderContainer" unique_id=431006261]
+layout_mode = 2
+theme = ExtResource("1_lotrb")
+text = "asdf"
+fit_content = true
+
+[node name="HSlider2" type="HSlider" parent="SliderContainer" unique_id=582932542]
+layout_mode = 2
+theme = ExtResource("1_lotrb")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="SliderContainer" unique_id=1936301628]
+layout_mode = 2
+theme = ExtResource("1_lotrb")
+text = "asdf"
+fit_content = true
+
+[node name="HSlider3" type="HSlider" parent="SliderContainer" unique_id=1410190916]
+layout_mode = 2
+theme = ExtResource("1_lotrb")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1813098218]
+layout_mode = 0
+offset_left = 962.0
+offset_top = 158.0
+offset_right = 1803.0
+offset_bottom = 972.0
+texture = ExtResource("2_shs6h")
+
+[node name="Go" type="Button" parent="." unique_id=1231940784]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 731.0
+offset_right = 774.0
+offset_bottom = 972.0
+theme = ExtResource("1_lotrb")
+text = "go"
+
+[connection signal="pressed" from="Go" to="." method="_on_go_pressed"]
