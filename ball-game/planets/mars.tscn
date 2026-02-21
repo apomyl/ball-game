@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bfsmdc18prp0u"]
+
+[ext_resource type="Script" uid="uid://ce6ygthf8g5xq" path="res://planets/mars.gd" id="1_0d8qf"]
+[ext_resource type="Texture2D" uid="uid://c3yy3y2n8d3kq" path="res://assets/mars.png" id="2_1ksib"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h336w"]
+radius = 145.27904
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxyc1"]
+radius = 5.0
+
+[node name="Mars" type="RigidBody2D" unique_id=1437047403]
+mass = 1.5
+gravity_scale = 0.0
+can_sleep = false
+script = ExtResource("1_0d8qf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1468203217]
+texture = ExtResource("2_1ksib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=301225786]
+shape = SubResource("CircleShape2D_h336w")
+
+[node name="WeaponHitbox" type="Area2D" parent="." unique_id=1938183517]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponHitbox" unique_id=170384547]
+position = Vector2(183, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_sxyc1")
+
+[connection signal="body_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_body_entered"]
