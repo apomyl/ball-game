@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://j8qysqi6ryk8"]
 
-[ext_resource type="PackedScene" uid="uid://die44hlvewhfn" path="res://walls.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" path="res://walls.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dgw4tkllph668" path="res://planets/ball.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://din1ec7v5mc3t" path="res://planets/plut.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://g57hjouxkorr" path="res://pluto.gd" id="4_1bvp3"]
 
 [node name="Node2D" type="Node2D" unique_id=1727287087]
 
 [node name="Walls" parent="." unique_id=1034601366 instance=ExtResource("2_0xm2m")]
 
 [node name="Ball" parent="." unique_id=612661867 instance=ExtResource("2_h2yge")]
+position = Vector2(1333, 375)
 
-[node name="Ball2" parent="." unique_id=321307990 instance=ExtResource("2_h2yge")]
+[node name="Ball2" parent="." unique_id=1222592222 instance=ExtResource("3_h2yge")]
+position = Vector2(534, 408)
+script = ExtResource("4_1bvp3")
