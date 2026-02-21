@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgw4tkllph668"]
 
-[ext_resource type="Script" uid="uid://cj7xrkful52ur" path="res://earth.gd" id="1_41u45"]
+[ext_resource type="Script" uid="uid://cebdcpwjoannv" path="res://baseplanet.gd" id="1_em3ml"]
 [ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="1_x8fbi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
@@ -19,7 +19,10 @@ gravity_scale = 0.0
 continuous_cd = 2
 linear_damp_mode = 1
 angular_damp_mode = 1
-script = ExtResource("1_41u45")
+script = ExtResource("1_em3ml")
+planet_name = "Earth"
+max_health = 300.0
+radius = 190.0
 
 [node name="circleshape2d" type="CollisionShape2D" parent="." unique_id=40652161]
 shape = SubResource("CircleShape2D_em3ml")
