@@ -25,10 +25,6 @@ func _ready():
 		hitbox.collision_layer = 0 # It doesn't need to be hit
 		hitbox.collision_mask = 1  # It MUST look at Layer 1
 		
-		# Connect the signal through code
-		if not hitbox.body_entered.is_connected(_on_weapon_hitbox_body_entered):
-			hitbox.body_entered.connect(_on_weapon_hitbox_body_entered)
-			print("System: Hitbox successfully connected for ", name)
 	else:
 		push_error("Error: Could not find a node named 'weaponhitbox' under ", name)
 
@@ -36,6 +32,14 @@ func _ready():
 	await get_tree().physics_frame
 	var random_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
 	linear_velocity = random_dir * planet_speed
+	
+	# Enable physics collision reporting
+	contact_monitor = true
+	max_contacts_reported = 5
+	
+	# Connect the RIGIDBODY'S collision signal, not just the Area2D
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 
 func _process(delta):
 	if flash_timer > 0:
@@ -79,10 +83,15 @@ func take_damage(amount: float):
 	if current_health <= 0:
 		print(name, " was destroyed!")
 		queue_free()
-
-func _on_weapon_hitbox_body_entered(body):
-	# DEBUG PRINT: If you see this, the connection is working!
-	print(name, "'s hitbox touched: ", body.name)
-	
-	if body != self and body.has_method("take_damage"):
-		body.take_damage(20)
+		
+func _on_body_entered(body):
+	if body.has_method("take_damage"):
+		var hitbox = get_node("weaponhitbox")
+		
+		# check if the body we just physically hit is ALSO overlapping our weapon rectangle
+		if hitbox.overlaps_body(body):
+			print("CRITICAL HIT: Physics collision inside Weapon Zone!")
+			body.take_damage(20)
+			# Add a little extra 'oomph' or screen shake here
+		else:
+			print("Normal Bump: Hit outside of weapon zone.")
