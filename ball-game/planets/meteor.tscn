@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c0jpfpewtskbv"]
+
+[ext_resource type="Script" uid="uid://dowpx7mpiwfw2" path="res://planets/meteor.gd" id="1_ffxre"]
+[ext_resource type="Texture2D" uid="uid://bsucop6gvv6nf" path="res://assets/edited-photo.png" id="2_t00xi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t00xi"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xs5jt"]
+radius = 18.42672
+height = 75.29022
+
+[node name="Meteor" type="RigidBody2D" unique_id=1445116854]
+physics_material_override = SubResource("PhysicsMaterial_t00xi")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_ffxre")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1107592761]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_t00xi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=114611123]
+position = Vector2(-4, -4)
+rotation = -0.8255407
+shape = SubResource("CapsuleShape2D_xs5jt")
+
+[node name="Timer" type="Timer" parent="." unique_id=2125004832]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
