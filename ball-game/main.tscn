@@ -2,10 +2,6 @@
 
 [ext_resource type="PackedScene" path="res://ball.tscn" id="1_ig7tw"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
-friction = 0.0
-bounce = 1.0
-
 [node name="Node2D" type="Node2D" unique_id=1727287087]
 
 [node name="Node2D" parent="." unique_id=612661867 instance=ExtResource("1_ig7tw")]
@@ -13,9 +9,3 @@ position = Vector2(458, 436)
 
 [node name="Node2D2" parent="." unique_id=886147641 instance=ExtResource("1_ig7tw")]
 position = Vector2(942, 295)
-
-[node name="Walls" type="StaticBody2D" parent="." unique_id=816609372]
-physics_material_override = SubResource("PhysicsMaterial_ig7tw")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls" unique_id=1649730733]
-polygon = PackedVector2Array(0, 0, 0, 1080, 1920, 1080, 1920, 0, 1920, -9, 1927, -9, 1932, 1093, -13, 1089, -14, -27, 1920, -9, 1920, 0)
