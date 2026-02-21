@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://bp6vqjk6b7nwq"]
+
+[ext_resource type="FontFile" uid="uid://b4n5v84ypqf5g" path="res://assets/Cosmo Corner PERSONAL USE ONLY!.ttf" id="1_5x3i2"]
+
+[resource]
+default_font = ExtResource("1_5x3i2")
+default_font_size = 100
+Button/fonts/font = ExtResource("1_5x3i2")
+Button/styles/disabled = null
