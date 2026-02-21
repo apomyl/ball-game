@@ -2,7 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="1_lotrb"]
 [ext_resource type="Script" uid="uid://ds05vrvc0rtms" path="res://ui/creation.gd" id="1_vusna"]
-[ext_resource type="Texture2D" uid="uid://dh6nngnb864rd" path="res://icon.svg" id="2_shs6h"]
+[ext_resource type="Script" uid="uid://cj4ih16vgpbmq" path="res://ui/planet_selector.gd" id="3_vusna"]
+[ext_resource type="Texture2D" uid="uid://di3ty4hop2e8t" path="res://assets/left.png" id="4_451v5"]
+[ext_resource type="Texture2D" uid="uid://cbfeibxxgvph4" path="res://assets/right.png" id="5_fkntm"]
 
 [node name="Creation" type="Control" unique_id=866555154]
 layout_mode = 3
@@ -52,13 +54,69 @@ fit_content = true
 layout_mode = 2
 theme = ExtResource("1_lotrb")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1813098218]
+[node name="Planet Selector" type="Control" parent="." unique_id=1041985243]
+anchors_preset = 0
+offset_left = 950.0
+offset_right = 1731.0
+offset_bottom = 823.0
+script = ExtResource("3_vusna")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Planet Selector" unique_id=159931920]
+clip_contents = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 1
+offset_left = -45.00006
+offset_right = 2110.0
+offset_bottom = 542.49994
+scale = Vector2(0.4, 0.4)
+
+[node name="Planet" type="TextureRect" parent="Planet Selector" unique_id=1653421733]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 0
-offset_left = 962.0
-offset_top = 158.0
-offset_right = 1803.0
-offset_bottom = 972.0
-texture = ExtResource("2_shs6h")
+offset_left = 140.0
+offset_top = 246.0
+offset_right = 640.0
+offset_bottom = 746.0
+size_flags_vertical = 3
+stretch_mode = 4
+
+[node name="LeftButton" type="TextureButton" parent="Planet Selector" unique_id=516673160]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 239.0
+offset_top = 801.0
+offset_right = 731.0
+offset_bottom = 1296.0
+scale = Vector2(0.25, 0.25)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_451v5")
+
+[node name="RightButton" type="TextureButton" parent="Planet Selector" unique_id=144966398]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 415.0
+offset_top = 800.0
+offset_right = 889.0
+offset_bottom = 1279.0
+scale = Vector2(0.25, 0.25)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("5_fkntm")
+
+[node name="Name" type="RichTextLabel" parent="Planet Selector" unique_id=1329680754]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 904.0
+offset_right = 668.0
+offset_bottom = 1090.0
+size_flags_vertical = 3
+theme = ExtResource("1_lotrb")
+bbcode_enabled = true
+text = "Sample"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Go" type="Button" parent="." unique_id=1231940784]
 layout_mode = 0
