@@ -7,9 +7,8 @@ var planet_health = 100.0
 func _ready():
 	var random_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	linear_velocity = random_direction * planet_speed
-	body_entered.connect(_on_body_entered)
 
-func _on_body_entered(body):    
+func _on_body_entered(body):
 	if body is RigidBody2D:
 		var damage_taken = body.mass * 10 
 		planet_health -= damage_taken
