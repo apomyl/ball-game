@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://die44hlvewhfn"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oelu8"]
+friction = 0.0
+bounce = 1.0
+
 [node name="Walls" type="Node2D" unique_id=1034601366]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=594058141]
+physics_material_override = SubResource("PhysicsMaterial_oelu8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls" unique_id=43302361]
+polygon = PackedVector2Array(0, 0, 0, 1080, 1920, 1080, 1920, 0, 1920, -9, 1927, -9, 1932, 1093, -13, 1089, -14, -27, 1920, -9, 1920, 0)
