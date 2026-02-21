@@ -1,3 +1,69 @@
-[gd_scene format=3 uid="uid://dvlk8tlltge6h"]
+[gd_scene format=3 uid="uid://c1hc0vikoif6"]
 
-[node name="Mercury" type="Node2D" unique_id=536030218]
+[ext_resource type="Script" uid="uid://cj7xrkful52ur" path="res://earth.gd" id="1_ajxml"]
+[ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="2_hq0fj"]
+[ext_resource type="Texture2D" uid="uid://dh6nngnb864rd" path="res://icon.svg" id="4_m6kgx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_em3ml"]
+radius = 197.00253
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_em3ml"]
+size = Vector2(195, 391)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hq0fj"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajxml"]
+radius = 37.01351
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hq0fj"]
+radius = 38.0
+
+[node name="Ball" type="RigidBody2D" unique_id=612661867]
+physics_material_override = SubResource("PhysicsMaterial_cbx31")
+gravity_scale = 0.0
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 5
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_ajxml")
+
+[node name="circleshape2d" type="CollisionShape2D" parent="." unique_id=40652161]
+shape = SubResource("CircleShape2D_em3ml")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
+position = Vector2(1.9999695, 1.9999962)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("2_hq0fj")
+
+[node name="weaponhitbox" type="Area2D" parent="." unique_id=596913455]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weaponhitbox" unique_id=881282358]
+position = Vector2(97.5, 1.5)
+shape = SubResource("RectangleShape2D_em3ml")
+
+[node name="MoonPivot" type="Node2D" parent="." unique_id=1990604429]
+
+[node name="Moon" type="StaticBody2D" parent="MoonPivot" unique_id=1450987899]
+position = Vector2(250, 0)
+physics_material_override = SubResource("PhysicsMaterial_hq0fj")
+
+[node name="Sprite2D" type="Sprite2D" parent="MoonPivot/Moon" unique_id=1824686572]
+position = Vector2(290, 3)
+texture = ExtResource("4_m6kgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoonPivot/Moon" unique_id=1763923939]
+position = Vector2(290, 1)
+shape = SubResource("CircleShape2D_ajxml")
+
+[node name="Area2D" type="Area2D" parent="MoonPivot/Moon" unique_id=1368046553]
+
+[node name="moon_damage" type="CollisionShape2D" parent="MoonPivot/Moon/Area2D" unique_id=1410379146]
+position = Vector2(290, 1)
+shape = SubResource("CircleShape2D_hq0fj")

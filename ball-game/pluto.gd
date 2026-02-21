@@ -1,9 +1,9 @@
 extends RigidBody2D
 
 @export var planet_name: String = "Planet"
-@export var planet_speed: float = 600.0
+@export var planet_speed: float = 1200.0
 @export var max_health: float = 150.0
-@export var rotation_speed: float = 2.0 
+@export var rotation_speed: float = 3.0
 
 var current_health: float
 var flash_timer: float = 0.0
@@ -49,7 +49,7 @@ func _process(delta):
 func _draw():
 	# 1. Visual indicator of the damage zone (Radius at 200)
 	var radius = 90
-	var arc_color = Color(1, 1, 1, 1) if flash_timer > 0 else Color(1, 0, 0, 0.4)
+	var arc_color = Color(1, 1, 1, 1) if flash_timer > 0 else Color(0.916, 0.0, 0.694, 0.4)
 	draw_arc(Vector2.ZERO, radius, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 6.0)
 	
 	# 2. Simple Health Bar
@@ -91,7 +91,7 @@ func _on_body_entered(body):
 		# check if the body we just physically hit is ALSO overlapping our weapon rectangle
 		if hitbox.overlaps_body(body):
 			print("CRITICAL HIT: Physics collision inside Weapon Zone!")
-			body.take_damage(5 + (100 - current_health)/5)
+			body.take_damage(5 + (150 - current_health)/5)
 			# Add a little extra 'oomph' or screen shake here
 		else:
 			print("Normal Bump: Hit outside of weapon zone.")

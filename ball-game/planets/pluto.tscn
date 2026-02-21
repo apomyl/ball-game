@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://din1ec7v5mc3t"]
 
-[ext_resource type="Script" uid="uid://cj7xrkful52ur" path="res://ballscript.gd" id="1_yxtx8"]
+[ext_resource type="Script" uid="uid://cj7xrkful52ur" path="res://earth.gd" id="1_yxtx8"]
 [ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="2_q3ec0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
