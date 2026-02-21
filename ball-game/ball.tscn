@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://okex1f4oeyq7"]
+[gd_scene format=3 uid="uid://dgw4tkllph668"]
 
-[ext_resource type="Texture2D" uid="uid://dh6nngnb864rd" path="res://icon.svg" id="1_x8fbi"]
+[ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="1_x8fbi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
 friction = 0.0
@@ -16,8 +16,11 @@ angular_damp_mode = 1
 
 [node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
 position = Vector2(1.9999695, 1.9999962)
-scale = Vector2(3.234375, 3.453125)
+scale = Vector2(2.2, 2.2)
 texture = ExtResource("1_x8fbi")
 
 [node name="Shape" type="CollisionShape2D" parent="." unique_id=1970132477]
 shape = SubResource("CircleShape2D_cbx31")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1964538969]
+polygon = PackedVector2Array(0, 0, 0, -191, 50, -185, 95, -166, 136, -135, 166, -95, 185, -49, 191, 0, 185, 50, 166, 96, 135, 136, 96, 166, 50, 185, 0, 192, 0, 0)
