@@ -19,7 +19,7 @@ func _on_go_pressed() -> void:
 	PlayerDetails.Mass = mass_slider.value
 	PlayerDetails.BaseHealth = health_slider.value
 	
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://ui/powerups/power1.tscn")
 
 func _on_speed_slider_value_changed(_value: float) -> void:
 	update_ui()

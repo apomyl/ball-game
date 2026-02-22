@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b301r0jgi3n0f"]
+
+[ext_resource type="Texture2D" uid="uid://drp8fp3i4w1b7" path="res://assets/backgrounds/background.png" id="1_r18cp"]
+[ext_resource type="Script" uid="uid://chx1bhib1wwbr" path="res://ui/powerups/power_1.gd" id="2_gak0k"]
+[ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="3_b61td"]
+
+[node name="Power1" type="TextureRect" unique_id=946894024]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r18cp")
+stretch_mode = 6
+script = ExtResource("2_gak0k")
+
+[node name="Button" type="Button" parent="." unique_id=595689357]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 212.0
+offset_right = 603.0
+offset_bottom = 876.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Button" unique_id=983172829]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_b61td")
+theme_override_font_sizes/normal_font_size = 20
+text = "Power 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="." unique_id=677607205]
+layout_mode = 0
+offset_left = 757.0
+offset_top = 208.0
+offset_right = 1193.0
+offset_bottom = 872.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Button2" unique_id=2066216022]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_b61td")
+theme_override_font_sizes/normal_font_size = 20
+text = "power 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="Button" parent="." unique_id=2116929360]
+layout_mode = 0
+offset_left = 1330.0
+offset_top = 212.0
+offset_right = 1766.0
+offset_bottom = 876.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Button3" unique_id=1298583740]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_b61td")
+theme_override_font_sizes/normal_font_size = 20
+text = "Power 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
