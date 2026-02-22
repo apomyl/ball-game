@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ciypjtrxwx58a"]
+
+[ext_resource type="Script" uid="uid://brv1jawps153r" path="res://sun.gd" id="1_0wui8"]
+[ext_resource type="Texture2D" uid="uid://0i2un2kbg7u" path="res://assets/sun2.png" id="2_0wui8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_em3ml"]
+radius = 437.16385
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nrygb"]
+radius = 958.0021
+
+[node name="Sun" type="StaticBody2D" unique_id=1870881949]
+physics_material_override = SubResource("PhysicsMaterial_cbx31")
+script = ExtResource("1_0wui8")
+planet_name = "Neptune"
+max_health = 250.0
+radius = 200.0
+
+[node name="circleshape2d" type="CollisionShape2D" parent="." unique_id=40652161]
+scale = Vector2(1.4, 1.4)
+shape = SubResource("CircleShape2D_em3ml")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
+position = Vector2(-4, 1)
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("2_0wui8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1516143382]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1944874623]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_nrygb")
+debug_color = Color(0.89467824, 0.3202344, 0, 0.41960785)
