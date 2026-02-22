@@ -19,6 +19,7 @@ default_font_size = 100
 Button/fonts/font = ExtResource("1_wl1kw")
 Button/styles/disabled = null
 HSlider/icons/grabber = ExtResource("2_wl1kw")
+HSlider/icons/grabber_highlight = ExtResource("2_wl1kw")
 HSlider/styles/grabber_area = SubResource("StyleBoxLine_5x3i2")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxLine_wl1kw")
 HSlider/styles/slider = SubResource("StyleBoxLine_lu33j")

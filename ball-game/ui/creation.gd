@@ -1,25 +1,45 @@
 extends Control
 
-var remaining_points
+@export var max_points = 1500
 
+@onready var speed_slider = $SliderContainer/SpeedSlider
+@onready var mass_slider = $SliderContainer/MassSlider
+@onready var health_slider = $SliderContainer/HealthSlider
+
+@onready var speed_label = $SliderContainer/SpeedLabelContainer/SpeedValue
+@onready var mass_label = $SliderContainer/MassLabelContainer/MassValue
+@onready var health_label = $SliderContainer/HealthLabelContainer/HealthValue
+
+func _ready() -> void:
+	update_ui()
+	
 func _on_go_pressed() -> void:
-	
 	PlayerDetails.planet_name = $"Planet Selector".index
-	PlayerDetails.Speed = $SliderContainer/SpeedSlider.value
-	PlayerDetails.Mass = $SliderContainer/MassSlider.value
-	PlayerDetails.BaseHealth = $SliderContainer/HealthSlider.value
-	
+	PlayerDetails.Speed = speed_slider.value
+	PlayerDetails.Mass = mass_slider.value
+	PlayerDetails.BaseHealth = health_slider.value
 	
 	get_tree().change_scene_to_file("res://main.tscn")
 
+func _on_speed_slider_value_changed(_value: float) -> void:
+	update_ui()
+	
+func _on_mass_slider_value_changed(_value: float) -> void:
+	update_ui()
 
-func _on_speed_slider_drag_ended(value_changed: bool) -> void:
-	pass # Replace with function body.
+func _on_health_slider_value_changed(_value: float) -> void:
+	update_ui()
 
 
-func _on_mass_slider_drag_ended(value_changed: bool) -> void:
-	pass # Replace with function body.
+func update_ui() -> void:
 
+	var remaining_points = max_points - (speed_slider.value + mass_slider.value + health_slider.value)
+	
+	speed_slider.max_value = speed_slider.value + remaining_points
+	mass_slider.max_value = mass_slider.value + remaining_points
+	health_slider.max_value = health_slider.value + remaining_points
+	
 
-func _on_health_slider_drag_ended(value_changed: bool) -> void:
-	pass # Replace with function body.
+	speed_label.text = "[font_size=20]%d/%d" % [speed_slider.value, speed_slider.max_value]
+	mass_label.text = "[font_size=20]%d/%d" % [mass_slider.value, mass_slider.max_value]
+	health_label.text = "[font_size=20]%d/%d" % [health_slider.value, health_slider.max_value]

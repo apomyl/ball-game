@@ -44,7 +44,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_lotrb")
 bbcode_enabled = true
-text = "[font_size=20]000/500[/font_size]"
+text = "[font_size=20]0000/1500[/font_size]"
 fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -73,7 +73,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_lotrb")
 bbcode_enabled = true
-text = "[font_size=20]000/500[/font_size]"
+text = "[font_size=20]0000/1500[/font_size]"
 fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -104,7 +104,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_lotrb")
 bbcode_enabled = true
-text = "[font_size=20]000/500[/font_size]"
+text = "[font_size=20]0000/1500[/font_size]"
 fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -188,7 +188,7 @@ offset_bottom = 972.0
 theme = ExtResource("1_lotrb")
 text = "go"
 
-[connection signal="drag_ended" from="SliderContainer/SpeedSlider" to="." method="_on_speed_slider_drag_ended"]
-[connection signal="drag_ended" from="SliderContainer/MassSlider" to="." method="_on_mass_slider_drag_ended"]
-[connection signal="drag_ended" from="SliderContainer/HealthSlider" to="." method="_on_health_slider_drag_ended"]
+[connection signal="value_changed" from="SliderContainer/SpeedSlider" to="." method="_on_speed_slider_value_changed"]
+[connection signal="value_changed" from="SliderContainer/MassSlider" to="." method="_on_mass_slider_value_changed"]
+[connection signal="value_changed" from="SliderContainer/HealthSlider" to="." method="_on_health_slider_value_changed"]
 [connection signal="pressed" from="Go" to="." method="_on_go_pressed"]
