@@ -11,18 +11,22 @@ config_version=5
 [application]
 
 config/name="ball-game"
-run/main_scene="uid://j8qysqi6ryk8"
-config/features=PackedStringArray("4.6", "Forward Plus")
+run/main_scene="uid://cbisgncstjtjh"
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerDetails="*uid://bpftcvfmdoopq"
+PlayerDetails="*res://playerdetails.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [physics]
 

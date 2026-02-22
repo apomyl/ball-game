@@ -1,21 +1,21 @@
-[gd_scene format=3 uid="uid://j8qysqi6ryk8"]
+[gd_scene load_steps=5 format=3 uid="uid://j8qysqi6ryk8"]
 
 [ext_resource type="PackedScene" uid="uid://die44hlvewhfn" path="res://walls.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dd4pgvypfjunb" path="res://planets/jupiter.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://c1axn8vp1hgad" path="res://player.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" path="res://planets/mars.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bfsmdc18prp0u" path="res://planets/mars.tscn" id="5_lquwl"]
 
-[node name="Node2D" type="Node2D" unique_id=1727287087]
+[node name="Node2D" type="Node2D"]
 
-[node name="Walls" parent="." unique_id=1034601366 instance=ExtResource("2_0xm2m")]
+[node name="Walls" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(-2, 20)
 scale = Vector2(1.15, 1.2)
 
-[node name="Jupiter" parent="." unique_id=1022645756 instance=ExtResource("3_h2yge")]
+[node name="Jupiter" parent="." instance=ExtResource("3_h2yge")]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=99355838]
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
-[node name="Mars" parent="." unique_id=1437047403 instance=ExtResource("5_lquwl")]
+[node name="Mars" parent="." instance=ExtResource("5_lquwl")]
 
-[node name="Player" parent="." unique_id=612661867 instance=ExtResource("4_1bvp3")]
+[node name="Player" parent="." instance=ExtResource("4_1bvp3")]

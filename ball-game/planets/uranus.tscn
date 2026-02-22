@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b8jxcvqp3sp8v"]
+[gd_scene load_steps=0 format=3 uid="uid://b8jxcvqp3sp8v"]
 
 [ext_resource type="Script" uid="uid://bhqjrlfobjjv6" path="res://uranus.gd" id="1_fnguc"]
 [ext_resource type="Texture2D" uid="uid://mhhif5kh1uau" path="res://assets/uranus.png" id="2_fnguc"]
