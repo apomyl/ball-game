@@ -26,10 +26,6 @@ func _ready():
 	$Image.texture = load(PlayerDetails.sprite_file_paths[PlayerDetails.PlanetName])
 	$Image.scale = Vector2(PlayerDetails.sprite_scale[PlayerDetails.PlanetName], PlayerDetails.sprite_scale[PlayerDetails.PlanetName])
 	
-	max_health = 100 + (900*PlayerDetails.BaseHealth/1498)
-	planet_speed = 500 + (2500*PlayerDetails.Speed/1498)
-	mass = 0.5 + (4*PlayerDetails.Mass/1498)
-	
 	add_powerups()
 
 	current_health = max_health
@@ -125,7 +121,7 @@ func _on_body_entered(body):
 			body.take_damage(2.0)
 	
 func add_powerups():
-	# Example: If you want to test the Death Star immediately, uncomment the line below
+	# Example: Uncomment the line below to test the Death Star immediately!
 	# has_death_star = true
 	pass
 
@@ -134,39 +130,25 @@ func add_powerups():
 # ==========================================
 
 func fire_death_star_laser():
-	var target = get_nearest_enemy()
+	# 1. Create the laser
+	var laser = laser_scene.instantiate()
 	
-	if target != null:
-		# 1. Create the laser
-		var laser = laser_scene.instantiate()
-		
-		# 2. Set the laser's starting position to our planet
-		laser.global_position = global_position
-		
-		# 3. Tell the laser we are the shooter (so it doesn't hurt us)
-		laser.shooter = self 
-		
-		# 4. Point the laser directly at the target
-		var direction = (target.global_position - global_position).normalized()
-		laser.rotation = direction.angle()
-		
-		# 5. Add it to the main game scene safely using call_deferred
-		get_tree().current_scene.add_child.call_deferred(laser)
-		
-		print("FIRING DEATH STAR LASER AT ", target.name, "!")
-
-func get_nearest_enemy() -> Node2D:
-	# Looks for all nodes that have been added to the "enemies" group
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	var nearest_enemy = null
-	var shortest_distance = INF # Start with an infinitely large distance
+	# 2. Set the starting position to our planet
+	laser.global_position = global_position
 	
-	for enemy in enemies:
-		if is_instance_valid(enemy): 
-			var distance = global_position.distance_to(enemy.global_position)
-			
-			if distance < shortest_distance:
-				shortest_distance = distance
-				nearest_enemy = enemy
-				
-	return nearest_enemy
+	# Tell the laser we shot it (so it ignores collisions with us initially)
+	laser.shooter = self 
+	
+	# 3. Figure out which way we are moving
+	var direction = linear_velocity.normalized()
+	if direction == Vector2.ZERO: 
+		direction = Vector2.RIGHT # Fallback if we are perfectly still
+	
+	# 4. Aim the laser and set its physical velocity
+	laser.rotation = direction.angle()
+	laser.velocity = direction * 1200.0 # 1200 is the speed; adjust if needed
+	
+	# 5. Add it to the main game scene safely
+	get_tree().current_scene.add_child.call_deferred(laser)
+	
+	print("DEATH STAR LASER FIRED!")

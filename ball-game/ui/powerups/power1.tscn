@@ -44,7 +44,7 @@ offset_top = 212.0
 offset_right = 603.0
 offset_bottom = 876.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Button"]
+[node name="RichTextLabel" type="TextureRect" parent="Button" unique_id=1245810594]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,10 +53,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("3_b61td")
-theme_override_font_sizes/normal_font_size = 20
-text = "Power 1"
-horizontal_alignment = 1
-vertical_alignment = 1
+expand_mode = 4
+stretch_mode = 6
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
@@ -65,7 +63,7 @@ offset_top = 208.0
 offset_right = 1193.0
 offset_bottom = 872.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Button2"]
+[node name="RichTextLabel" type="TextureRect" parent="Button2" unique_id=1405880743]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,10 +72,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("3_b61td")
-theme_override_font_sizes/normal_font_size = 20
-text = "power 2"
-horizontal_alignment = 1
-vertical_alignment = 1
+expand_mode = 4
+stretch_mode = 6
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
@@ -86,7 +82,7 @@ offset_top = 212.0
 offset_right = 1766.0
 offset_bottom = 876.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Button3"]
+[node name="RichTextLabel" type="TextureRect" parent="Button3" unique_id=181952327]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,10 +91,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("3_b61td")
-theme_override_font_sizes/normal_font_size = 20
-text = "Power 3"
-horizontal_alignment = 1
-vertical_alignment = 1
+expand_mode = 4
+stretch_mode = 6
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

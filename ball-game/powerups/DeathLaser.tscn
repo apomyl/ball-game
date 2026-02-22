@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cecxkqywmtc4l"]
+
+[ext_resource type="Script" uid="uid://buth45d7xp20n" path="res://powerups/death_laser.gd" id="1_pd3st"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ao0na"]
+size = Vector2(60, 10)
+
+[node name="DeathLaser" type="CharacterBody2D" unique_id=2077128139]
+script = ExtResource("1_pd3st")
+speed = null
+damage = null
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=90198391]
+offset_right = 60.0
+offset_bottom = 10.0
+color = Color(0.22352941, 1, 0.078431375, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1041945332]
+position = Vector2(30, 5)
+shape = SubResource("RectangleShape2D_ao0na")
