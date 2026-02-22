@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cxwhyfoyjy062"]
+[gd_scene load_steps=0 format=3 uid="uid://cxwhyfoyjy062"]
 
 [ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="1_b7e8f"]
 [ext_resource type="Texture2D" uid="uid://dl8ji4d5vktpk" path="res://assets/backgrounds/bg110.png" id="2_ka0dn"]

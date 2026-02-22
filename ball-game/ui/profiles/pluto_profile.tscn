@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bxj4q8v7tb7hw"]
+[gd_scene load_steps=24 format=3 uid="uid://bxj4q8v7tb7hw"]
 
 [ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="1_rt5r6"]
 [ext_resource type="Texture2D" uid="uid://dmphd50yewpog" path="res://assets/backgrounds/bg11.png" id="2_5v35m"]
@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dmx4einkgnita" path="res://assets/backgrounds/bg29.png" id="10_3qdl1"]
 [ext_resource type="Texture2D" uid="uid://v3656o1k3eox" path="res://assets/backgrounds/bg210.png" id="11_mpdj2"]
 [ext_resource type="Texture2D" uid="uid://c7vundb70gsc0" path="res://assets/backgrounds/bg211.png" id="12_enchm"]
-[ext_resource type="Script" path="res://ui/background.gd" id="13_enchm"]
-[ext_resource type="Script" path="res://ui/profiles/battle.gd" id="16_5v35m"]
+[ext_resource type="Script" uid="uid://cab7o5gtj4pnl" path="res://ui/background.gd" id="13_enchm"]
+[ext_resource type="Script" uid="uid://cr8nj4svajp8w" path="res://ui/profiles/battle.gd" id="16_5v35m"]
 
 [sub_resource type="Theme" id="Theme_epxni"]
 default_font = ExtResource("1_rt5r6")
@@ -83,7 +83,7 @@ default_font_size = 26
 default_font = ExtResource("1_rt5r6")
 default_font_size = 26
 
-[node name="PlanetProfile" type="Control" unique_id=485380306]
+[node name="PlanetProfile" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,14 +92,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_epxni")
 
-[node name="Background" type="AnimatedSprite2D" parent="." unique_id=860410477]
+[node name="Background" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_e551c")
 animation = &"bg"
 centered = false
 script = ExtResource("13_enchm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=3487046]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,24 +108,24 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Planet Side" type="VBoxContainer" parent="HBoxContainer" unique_id=1620258230]
+[node name="Planet Side" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Planet" type="TextureRect" parent="HBoxContainer/Planet Side" unique_id=1682718729]
+[node name="Planet" type="TextureRect" parent="HBoxContainer/Planet Side"]
 custom_minimum_size = Vector2(800, 800)
 layout_mode = 2
 texture = ExtResource("3_k152i")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="NextButton" type="Button" parent="HBoxContainer/Planet Side" unique_id=608277768]
+[node name="NextButton" type="Button" parent="HBoxContainer/Planet Side"]
 layout_mode = 2
 theme = ExtResource("4_fwws5")
 text = "battle"
 script = ExtResource("16_5v35m")
 
-[node name="Info side" type="MarginContainer" parent="HBoxContainer" unique_id=1104194510]
+[node name="Info side" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
@@ -133,90 +133,90 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Text Background" type="TextureRect" parent="HBoxContainer/Info side" unique_id=1087948786]
+[node name="Text Background" type="TextureRect" parent="HBoxContainer/Info side"]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_k6dbu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Info side" unique_id=895341051]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Info side"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/Info side/VBoxContainer" unique_id=984350653]
+[node name="Label" type="Label" parent="HBoxContainer/Info side/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_uowti")
 text = "PLUTO"
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Info side/VBoxContainer" unique_id=31726670]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Info side/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Info side/VBoxContainer" unique_id=1542289302]
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Info side/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_jh0gb")
 theme_override_constants/h_separation = 31
 theme_override_constants/v_separation = 38
 columns = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1677003902]
+[node name="Label" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Classification:"
 
-[node name="Label2" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=595668432]
+[node name="Label2" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Dwarf"
 
-[node name="Label3" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1364246985]
+[node name="Label3" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Radius:"
 
-[node name="Label4" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1896746644]
+[node name="Label4" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "1,188.3km"
 
-[node name="Label5" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1385465786]
+[node name="Label5" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Orbital Period:"
 
-[node name="Label6" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1212905654]
+[node name="Label6" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "248 years"
 
-[node name="Label7" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1451659936]
+[node name="Label7" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Surface Temperature:"
 
-[node name="Label8" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=84083502]
+[node name="Label8" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "-230 °C"
 
-[node name="Label9" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=866818588]
+[node name="Label9" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Moons:"
 
-[node name="Label10" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=950866652]
+[node name="Label10" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "5"
 
-[node name="Label11" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1137106502]
+[node name="Label11" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Composition:"
 
-[node name="Label12" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1131509347]
+[node name="Label12" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Icy Rock"
 
-[node name="Label13" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=871116067]
+[node name="Label13" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Special Ability:"
 
-[node name="Label14" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1097344912]
+[node name="Label14" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Underdog"
 
-[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Info side/VBoxContainer" unique_id=1811141905]
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Info side/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Info side/VBoxContainer" unique_id=1882038481]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Info side/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_87req")
 text = "Pluto is the smallest and most resilient planet, fueled by a relentless drive to survive against the odds. Its ability, Dwarf Planet’s Revenge, scales its offensive power as it takes damage, causing it to deal massive damage at low health in an attempt to make a comeback."
