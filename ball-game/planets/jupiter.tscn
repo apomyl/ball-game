@@ -1,9 +1,40 @@
-[gd_scene format=3 uid="uid://gxbai13mkeje"]
+[gd_scene format=3 uid="uid://d3cuvtmubtysm"]
 
-[node name="Jupiter" type="Control" unique_id=1898940841]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://o4hjocolmicl" path="res://planets/jupiter.gd" id="1_7oexv"]
+[ext_resource type="Texture2D" uid="uid://u7yme26fhc74" path="res://assets/jupiter.png" id="2_7oexv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_em3ml"]
+radius = 397.0315
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_em3ml"]
+size = Vector2(403, 792)
+
+[node name="Jupiter" type="RigidBody2D" unique_id=612661867]
+physics_material_override = SubResource("PhysicsMaterial_cbx31")
+gravity_scale = 0.0
+continuous_cd = 2
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_7oexv")
+
+[node name="circleshape2d" type="CollisionShape2D" parent="." unique_id=40652161]
+shape = SubResource("CircleShape2D_em3ml")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
+position = Vector2(1.9999695, 1.9999962)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("2_7oexv")
+
+[node name="weaponhitbox" type="Area2D" parent="." unique_id=596913455]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weaponhitbox" unique_id=881282358]
+position = Vector2(201.5, 1)
+shape = SubResource("RectangleShape2D_em3ml")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="weaponhitbox" to="." method="_on_weaponhitbox_body_entered"]
