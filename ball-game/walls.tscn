@@ -10,4 +10,6 @@ bounce = 1.0
 physics_material_override = SubResource("PhysicsMaterial_oelu8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls" unique_id=43302361]
+position = Vector2(-1677.5771, -916.25055)
+scale = Vector2(1.6668165, 1.641183)
 polygon = PackedVector2Array(0, 0, 0, 1080, 1920, 1080, 1920, 0, 1920, -9, 1927, -9, 1932, 1093, -13, 1089, -14, -27, 1920, -9, 1920, 0)
