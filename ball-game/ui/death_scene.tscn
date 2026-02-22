@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0l7nw3j38f4q"]
+
+[ext_resource type="Texture2D" uid="uid://bgxa7tt1jvbka" path="res://assets/backgrounds/death.png" id="1_4wqrt"]
+[ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="2_wrxdq"]
+[ext_resource type="Script" uid="uid://cdmj6o11lrnwc" path="res://ui/restart.gd" id="3_j6bmh"]
+
+[node name="DeathScene" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -32.0
+offset_right = 1954.0
+offset_bottom = 1124.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4wqrt")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 583.0
+offset_top = 484.0
+offset_right = 1444.0
+offset_bottom = 633.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wrxdq")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1632.0
+offset_top = 67.0
+offset_right = 1839.0
+offset_bottom = 104.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_wrxdq")
+theme_override_font_sizes/font_size = 40
+text = "RESTART"
+script = ExtResource("3_j6bmh")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

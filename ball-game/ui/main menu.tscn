@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://cbisgncstjtjh"]
+[gd_scene load_steps=18 format=3 uid="uid://cbisgncstjtjh"]
 
 [ext_resource type="Script" uid="uid://gulcyh205wdu" path="res://ui/main_menu.gd" id="1_rs7wx"]
-[ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="2_ot7ep"]
 [ext_resource type="Texture2D" uid="uid://7p0tchg00sjj" path="res://assets/backgrounds/background11.png" id="2_tbovc"]
 [ext_resource type="Texture2D" uid="uid://dptnl8w8bnmeq" path="res://assets/title.png" id="3_ot7ep"]
 [ext_resource type="Texture2D" uid="uid://bb66jhl1306bl" path="res://assets/backgrounds/background12.png" id="3_wruty"]
@@ -15,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dmpqemx51v3c2" path="res://assets/backgrounds/bg19.png" id="10_mp2d1"]
 [ext_resource type="Texture2D" uid="uid://dl8ji4d5vktpk" path="res://assets/backgrounds/bg110.png" id="11_n2dns"]
 [ext_resource type="Texture2D" uid="uid://dcq3akr8svpbx" path="res://assets/backgrounds/bg111.png" id="12_isiei"]
-[ext_resource type="Script" path="res://ui/background.gd" id="13_y4g4h"]
+[ext_resource type="Script" uid="uid://cab7o5gtj4pnl" path="res://ui/background.gd" id="13_y4g4h"]
+[ext_resource type="Texture2D" uid="uid://bh2bc556lqbt7" path="res://assets/char2.png" id="14_tbovc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v1sgb"]
 animations = [{
@@ -58,14 +58,14 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="MainMenu" type="Control" unique_id=470313900]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_rs7wx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1474186041]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 texture_filter = 4
 sprite_frames = SubResource("SpriteFrames_v1sgb")
@@ -73,15 +73,15 @@ animation = &"bg"
 centered = false
 script = ExtResource("13_y4g4h")
 
-[node name="Background" type="TextureRect" parent="." unique_id=354763757]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("2_ot7ep")
+texture = ExtResource("14_tbovc")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=778991102]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -93,7 +93,7 @@ offset_bottom = 231.0
 grow_horizontal = 2
 texture = ExtResource("3_ot7ep")
 
-[node name="NextButton" type="Button" parent="." unique_id=1851575151]
+[node name="NextButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1121.0
 offset_top = 872.0

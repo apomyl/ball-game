@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c3ikhddpsu0su"]
+[gd_scene load_steps=0 format=3 uid="uid://c3ikhddpsu0su"]
 
 [ext_resource type="Script" uid="uid://cwnm70cen18v7" path="res://planets/venus.gd" id="1_gqdcm"]
 [ext_resource type="Texture2D" uid="uid://4b2fahdyv0r" path="res://assets/pluto.png" id="2_uxbrh"]
