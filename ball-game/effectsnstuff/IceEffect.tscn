@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ogjs0hy8x4ku"]
+
+[ext_resource type="Shader" uid="uid://dk87xwpp67axd" path="res://effectsnstuff/IceEffect.gdshader" id="1_evpuy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7njw"]
+shader = ExtResource("1_evpuy")
+shader_parameter/frost_color = Color(0.5, 0.8, 1, 0.6)
+
+[sub_resource type="Gradient" id="Gradient_ihgqj"]
+colors = PackedColorArray(0.5647059, 0.8352941, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rjwge"]
+gradient = SubResource("Gradient_ihgqj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m0flw"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 50.0
+initial_velocity_min = 80.0
+initial_velocity_max = 120.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 10, 0)
+scale_min = 1.5
+scale_max = 8.0
+color_ramp = SubResource("GradientTexture1D_rjwge")
+
+[node name="IceEffect" type="Sprite2D" unique_id=1185070208]
+material = SubResource("ShaderMaterial_f7njw")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1616485635]
+z_index = 1
+amount = 150
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_m0flw")

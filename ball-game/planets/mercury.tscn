@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b57bl6unto8js"]
+
+[ext_resource type="Script" uid="uid://b5qjpllmel31k" path="res://planets/mercury.gd" id="1_is82n"]
+[ext_resource type="Texture2D" uid="uid://dubhbsj745cnv" path="res://assets/mercury.png" id="2_sv2gw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x2bu8"]
+radius = 111.220505
+
+[node name="Mercury" type="RigidBody2D" unique_id=612661867]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_cbx31")
+gravity_scale = 0.0
+continuous_cd = 2
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_is82n")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("2_sv2gw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=373518545]
+visible = false
+shape = SubResource("CircleShape2D_x2bu8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
