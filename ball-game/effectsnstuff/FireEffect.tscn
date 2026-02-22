@@ -4,11 +4,13 @@
 blend_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_cdlhw"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tbbdy"]
 gradient = SubResource("Gradient_cdlhw")
 fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_pt2p5"]
 offsets = PackedFloat32Array(0, 0.5, 1)

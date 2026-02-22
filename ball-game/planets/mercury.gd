@@ -5,7 +5,8 @@ extends RigidBody2D
 @export var planet_speed: float = 900.0
 @export var max_health: float = 800.0
 @export var rotation_speed: float = 6.0
-@export var radius: float = 40.0 
+# !!! IMPORTANT: If arcs are inside the planet, INCREASE THIS NUMBER in the Inspector !!!
+@export var radius: float = 80.0 
 
 @export var damage_multiplier: float = 0.0001 
 @export var combo_damage: float = 40.0 
@@ -24,9 +25,14 @@ func _ready():
 	current_health = max_health
 	randomize() 
 	
+	# PHYSICS SETUP
 	can_sleep = false 
 	contact_monitor = true
 	max_contacts_reported = 32 
+	
+	# AUTO-FIX IMAGE LAYERING: Forces arcs/healthbar to the front
+	var img = get_node_or_null("Image")
+	if img: img.show_behind_parent = true
 	
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
@@ -41,71 +47,51 @@ func _physics_process(_delta):
 func _integrate_forces(state):
 	if state.linear_velocity.length() < 10.0:
 		var random_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
-		if random_dir == Vector2.ZERO: random_dir = Vector2.RIGHT
 		state.linear_velocity = random_dir * planet_speed
 	else:
 		state.linear_velocity = state.linear_velocity.normalized() * planet_speed
-		
 	state.angular_velocity = rotation_speed
 
-# --- MASTER STATUS EFFECT LOOP ---
 func _process(delta):
 	if flash_timer > 0:
 		flash_timer -= delta
 
 	var targets_to_remove = []
-
 	for body in afflicted_targets.keys():
 		if not is_instance_valid(body):
 			targets_to_remove.append(body)
 			continue
-
 		var status = afflicted_targets[body]
-
-		# 1. WHITE FLASH COMBO
+		
 		if status.white_flash_timer > 0:
 			status.white_flash_timer -= delta
-			if status.white_flash_timer <= 0:
-				update_body_color(body, status) # Revert from flash
-			continue # Skip other effects during flash
+			if status.white_flash_timer <= 0: update_body_color(body, status)
+			continue 
 
-		# 2. RED BURN TICK FLASH
 		if status.red_flash_timer > 0:
 			status.red_flash_timer -= delta
-			if status.red_flash_timer <= 0:
-				update_body_color(body, status) # Revert from red tick
+			if status.red_flash_timer <= 0: update_body_color(body, status)
 
-		# 3. ICE SLOW
 		if status.ifslowed:
 			status.slow_timer -= delta
 			if status.slow_timer <= 0:
-				remove_effect(body, "ice") 
+				remove_effect(body, "ice")
 				status.ifslowed = false
-				body.set("ifslowed", false) 
 				restore_target_speed(body, status)
-				update_body_color(body, status) # Color change
-				print("❄️ Ice expired on ", body.name)
+				update_body_color(body, status)
 
-		# 4. FIRE BURN
 		if status.onfire:
 			status.fire_timer -= delta
 			status.fire_tick_timer -= delta
-			
 			if status.fire_tick_timer <= 0:
-				status.fire_tick_timer = 1.0 
-				status.red_flash_timer = 0.15 # Set the red tick flash duration
-				update_body_color(body, status) # Instantly turn red
-				
-				print("🔥 FIRE TICK! Dealt 5 damage to ", body.name)
-				if body.has_method("take_damage"):
-					body.take_damage(5.0) 
-					
+				status.fire_tick_timer = 1.0
+				status.red_flash_timer = 0.15
+				update_body_color(body, status)
+				if body.has_method("take_damage"): body.take_damage(5.0)
 			if status.fire_timer <= 0:
-				remove_effect(body, "fire") 
+				remove_effect(body, "fire")
 				status.onfire = false
-				body.set("onfire", false) 
-				update_body_color(body, status) # Color change
-				print("🔥 Fire expired on ", body.name)
+				update_body_color(body, status)
 
 		if not status.ifslowed and not status.onfire and status.white_flash_timer <= 0:
 			targets_to_remove.append(body)
@@ -113,175 +99,128 @@ func _process(delta):
 	for body in targets_to_remove:
 		afflicted_targets.erase(body)
 
-
-# --- CORE COLLISION LOGIC ---
 func _on_body_entered(body):
 	if body.has_method("take_damage") and body != self:
-		
 		var local_pos = to_local(body.global_position)
 		var hit_ice = local_pos.x < 0
 		var hit_fire = local_pos.x >= 0
-
-		var my_speed = linear_velocity.length()
-		var impact_energy = (mass * (my_speed ** 2))
-		var calculated_damage = clamp(impact_energy * damage_multiplier, 5.0, 50.0)
 		
-		body.take_damage(calculated_damage)
-		apply_hit_stop(0.06)
+		body.take_damage(clamp((mass * (linear_velocity.length()**2)) * damage_multiplier, 5.0, 50.0))
 		flash_timer = 0.2
+		apply_hit_stop(0.06)
 		
 		if body is RigidBody2D:
-			var push_dir = (body.global_position - global_position).normalized()
-			if push_dir == Vector2.ZERO: push_dir = Vector2.UP
-			body.apply_central_impulse(push_dir * 800.0)
-
+			body.apply_central_impulse((body.global_position - global_position).normalized() * 800.0)
+		
 		if hit_ice: apply_ice(body)
 		if hit_fire: apply_fire(body)
 
-
-# ==========================================
-# ELEMENTAL SYSTEM & VISUALS
-# ==========================================
-
 func initialize_status(body):
 	if not afflicted_targets.has(body):
-		var o_speed = body.get("planet_speed")
-		var o_damp = body.linear_damp if body is RigidBody2D else 0.0
-
 		afflicted_targets[body] = {
-			"ifslowed": false,
-			"slow_timer": 0.0,
-			"onfire": false,
-			"fire_timer": 0.0,
-			"fire_tick_timer": 1.0,
-			"white_flash_timer": 0.0,
-			"red_flash_timer": 0.0, # <--- NEW for red tick
+			"ifslowed": false, "slow_timer": 0.0,
+			"onfire": false, "fire_timer": 0.0, "fire_tick_timer": 1.0,
+			"white_flash_timer": 0.0, "red_flash_timer": 0.0,
 			"original_color": body.modulate,
-			"original_speed": o_speed,
-			"original_damp": o_damp,
-			"visual_nodes": [] 
+			"original_speed": body.get("planet_speed"),
+			"original_damp": body.linear_damp if body is RigidBody2D else 0.0,
+			"visual_nodes": []
 		}
 
 func apply_ice(body):
 	initialize_status(body)
 	var status = afflicted_targets[body]
-	
 	if not status.ifslowed:
 		status.ifslowed = true
-		status.slow_timer = 4.0 
-		body.set("ifslowed", true) 
-
-		var ice_instance = ice_effect_scene.instantiate()
-		ice_instance.name = "IceVisual"
-		body.add_child(ice_instance)
-		status.visual_nodes.append(ice_instance)
-		
-		update_body_color(body, status) # <--- ADDED BLUE HUE
-
-		if status.original_speed != null:
-			body.set("planet_speed", status.original_speed * 0.4) 
-		elif body is RigidBody2D:
-			body.linear_damp = 5.0 
-
+		status.slow_timer = 4.0
+		var ice = ice_effect_scene.instantiate()
+		body.add_child(ice)
+		status.visual_nodes.append(ice)
+		if status.original_speed: body.set("planet_speed", status.original_speed * 0.4)
+		update_body_color(body, status)
 	check_combo(body, status)
 
 func apply_fire(body):
 	initialize_status(body)
 	var status = afflicted_targets[body]
-
 	if not status.onfire:
 		status.onfire = true
-		status.fire_timer = 3.0 
-		body.set("onfire", true) 
-		
-		var fire_instance = fire_effect_scene.instantiate()
-		fire_instance.name = "FireVisual"
-		body.add_child(fire_instance)
-		status.visual_nodes.append(fire_instance)
-
+		status.fire_timer = 3.0
+		var fire = fire_effect_scene.instantiate()
+		body.add_child(fire)
+		status.visual_nodes.append(fire)
 	check_combo(body, status)
 
 func check_combo(body, status):
 	if status.ifslowed and status.onfire:
-		print("💥 THERMAL SHOCK COMBO!")
-		
 		status.ifslowed = false
 		status.onfire = false
-		body.set("ifslowed", false)
-		body.set("onfire", false)
 		restore_target_speed(body, status)
-
 		remove_effect(body, "all")
+		status.white_flash_timer = 0.15
+		update_body_color(body, status)
+		body.add_child(steam_effect_scene.instantiate())
+		if body.has_method("take_damage"): body.take_damage(combo_damage)
 
-		status.white_flash_timer = 0.15 
-		update_body_color(body, status) # Trigger white flash
-
-		var steam = steam_effect_scene.instantiate()
-		body.add_child(steam)
-
-		if body.has_method("take_damage"):
-			body.take_damage(combo_damage)
-
-# NEW HIERARCHICAL COLOR FUNCTION
 func update_body_color(body, status):
 	if not is_instance_valid(body): return
-
-	# PRIORITY 1: White Flash from Combo
-	if status.white_flash_timer > 0:
-		body.modulate = Color(4.0, 4.0, 4.0, 1.0) # Glow White
-	# PRIORITY 2: Red Tick from Burn
-	elif status.red_flash_timer > 0:
-		body.modulate = Color.RED
-	# PRIORITY 3: Blue Hue from Slow
-	elif status.ifslowed:
-		body.modulate = Color(0.4, 0.7, 1.0) # Icy Blue
-	# PRIORITY 4: Return to normal
-	else:
-		body.modulate = status.original_color
+	if status.white_flash_timer > 0: body.modulate = Color(4,4,4,1)
+	elif status.red_flash_timer > 0: body.modulate = Color.RED
+	elif status.ifslowed: body.modulate = Color(0.4, 0.7, 1.0)
+	else: body.modulate = status.original_color
 
 func remove_effect(body, type):
 	if not afflicted_targets.has(body): return
-	var status = afflicted_targets[body]
-	
-	for node in status.visual_nodes:
-		if is_instance_valid(node):
-			if type == "all" or (type == "ice" and "IceVisual" in node.name) or (type == "fire" and "FireVisual" in node.name):
-				node.queue_free()
-	
-	if type == "all":
-		status.visual_nodes.clear()
+	for node in afflicted_targets[body].visual_nodes:
+		if is_instance_valid(node): node.queue_free()
+	if type == "all": afflicted_targets[body].visual_nodes.clear()
 
 func restore_target_speed(body, status):
-	if status.original_speed != null:
-		body.set("planet_speed", status.original_speed)
-	elif body is RigidBody2D:
-		body.linear_damp = status.original_damp
-
-func _draw():
-	var hp_pct = clamp(current_health / max_health, 0.0, 1.0)
-	var bar_width = radius * 1.2
-	var bar_pos = Vector2(-bar_width / 2, -radius - 30)
-	draw_rect(Rect2(bar_pos, Vector2(bar_width, 10)), Color.BLACK)
-	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, 10)), Color.WHITE.lerp(Color.RED, 1.0 - hp_pct))
+	if status.original_speed: body.set("planet_speed", status.original_speed)
 
 func take_damage(amount: float):
 	current_health -= amount
 	flash_timer = 0.1
-	if current_health <= 0:
-		clear_effects_before_death() 
-		queue_free()
-
-func clear_effects_before_death():
-	for body in afflicted_targets.keys():
-		if is_instance_valid(body):
-			remove_effect(body, "all")
-			var status = afflicted_targets[body]
-			body.set("ifslowed", false)
-			body.set("onfire", false)
-			restore_target_speed(body, status)
-			body.modulate = status.original_color
+	if current_health <= 0: queue_free()
 
 func apply_hit_stop(duration: float):
 	Engine.time_scale = 0.05
 	await get_tree().create_timer(duration, true, false, true).timeout
 	Engine.time_scale = 1.0
+
+# ==========================================
+# DRAWING (SLIGHT GAP FOR ARCS)
+# ==========================================
+func _draw():
+	# 1. DRAW ARCS WITH A GAP
+	# If the arcs are still too close, increase the '25' or the 'radius' in Inspector
+	var arc_distance = radius + 25 
+	
+	# Flash white on hit
+	var ice_c = Color.WHITE if flash_timer > 0 else Color(0, 0.7, 1.0, 0.6)
+	var fire_c = Color.WHITE if flash_timer > 0 else Color(1.0, 0.4, 0.0, 0.6)
+
+	# Right Side (Fire)
+	draw_arc(Vector2.ZERO, arc_distance, deg_to_rad(-90), deg_to_rad(90), 32, fire_c, 10.0)
+	# Left Side (Ice)
+	draw_arc(Vector2.ZERO, arc_distance, deg_to_rad(90), deg_to_rad(270), 32, ice_c, 10.0)
+
+	# 2. DRAW HEALTHBAR ABOVE (Non-spinning)
+	var hp_pct = clamp(current_health / max_health, 0.0, 1.0)
+	var bar_w = radius * 2.0
+	var bar_h = 12
+	
+	# Calculate a static "Top" position even while spinning
+	var bar_pos_vertical = Vector2(-bar_w / 2, -radius - 70) # Gap for healthbar too
+	var bar_offset = bar_pos_vertical.rotated(-rotation) 
+
+	# Force the UI to stay upright
+	draw_set_transform(bar_offset, -rotation, Vector2.ONE)
+	
+	# Draw Background
+	draw_rect(Rect2(Vector2.ZERO, Vector2(bar_w, bar_h)), Color.BLACK)
+	# Draw Health
+	var health_color = Color.GREEN.lerp(Color.RED, 1.0 - hp_pct)
+	draw_rect(Rect2(Vector2.ZERO, Vector2(bar_w * hp_pct, bar_h)), health_color)
+	
+	draw_set_transform(Vector2.ZERO, 0, Vector2.ONE)
