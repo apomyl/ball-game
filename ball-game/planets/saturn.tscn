@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bqimp0qy231j5"]
+[gd_scene format=3 uid="uid://2131wg2fwev8"]
 
 [ext_resource type="Script" uid="uid://bevtd6akhoisp" path="res://saturn.gd" id="1_nrygb"]
 [ext_resource type="Texture2D" uid="uid://bh4q4ukwfcro5" path="res://assets/saturn.png" id="2_nrygb"]
@@ -16,7 +16,7 @@ size = Vector2(432.5, 875)
 [sub_resource type="CircleShape2D" id="CircleShape2D_nrygb"]
 radius = 379.0013
 
-[node name="Ball2" type="RigidBody2D" unique_id=612661867]
+[node name="Saturn" type="RigidBody2D" unique_id=612661867]
 mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_cbx31")
 gravity_scale = 0.0

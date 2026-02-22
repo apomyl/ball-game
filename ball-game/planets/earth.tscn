@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c1hc0vikoif6"]
+[gd_scene format=3 uid="uid://dvlk8tlltge6h"]
 
 [ext_resource type="Script" uid="uid://cj7xrkful52ur" path="res://earth.gd" id="1_ajxml"]
 [ext_resource type="Texture2D" uid="uid://b1lxbsn1misl1" path="res://assets/earth.png" id="2_hq0fj"]
@@ -23,7 +23,7 @@ radius = 37.01351
 [sub_resource type="CircleShape2D" id="CircleShape2D_hq0fj"]
 radius = 38.0
 
-[node name="Ball" type="RigidBody2D" unique_id=612661867]
+[node name="Earth" type="RigidBody2D" unique_id=612661867]
 physics_material_override = SubResource("PhysicsMaterial_cbx31")
 gravity_scale = 0.0
 continuous_cd = 2

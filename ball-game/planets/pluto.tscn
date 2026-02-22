@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://din1ec7v5mc3t"]
+[gd_scene format=3 uid="uid://cegt6tbgur0sm"]
 
 [ext_resource type="Script" uid="uid://g57hjouxkorr" path="res://pluto.gd" id="1_hklr6"]
 [ext_resource type="Texture2D" uid="uid://4b2fahdyv0r" path="res://assets/pluto.png" id="2_hklr6"]
@@ -8,12 +8,12 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_em3ml"]
-radius = 146.66666
+radius = 183.52263
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_em3ml"]
 size = Vector2(147.49998, 295)
 
-[node name="Ball2" type="RigidBody2D" unique_id=612661867]
+[node name="Pluto" type="RigidBody2D" unique_id=612661867]
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_cbx31")
 gravity_scale = 0.0
