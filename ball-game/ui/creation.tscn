@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="1_lotrb"]
 [ext_resource type="Script" uid="uid://ds05vrvc0rtms" path="res://ui/creation.gd" id="1_vusna"]
+[ext_resource type="Texture2D" uid="uid://drp8fp3i4w1b7" path="res://assets/backgrounds/background.png" id="2_fkntm"]
 [ext_resource type="Script" uid="uid://cj4ih16vgpbmq" path="res://ui/planet_selector.gd" id="3_vusna"]
 [ext_resource type="Texture2D" uid="uid://di3ty4hop2e8t" path="res://assets/left.png" id="4_451v5"]
 [ext_resource type="Texture2D" uid="uid://cbfeibxxgvph4" path="res://assets/right.png" id="5_fkntm"]
@@ -15,6 +16,16 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_vusna")
+
+[node name="BG" type="TextureRect" parent="." unique_id=807349373]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fkntm")
+stretch_mode = 6
 
 [node name="SliderContainer" type="VBoxContainer" parent="." unique_id=760379179]
 layout_mode = 0

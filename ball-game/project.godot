@@ -17,12 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-<<<<<<< Updated upstream
 PlayerDetails="*res://playerdetails.gd"
-=======
-User="*uid://bpftcvfmdoopq"
-PlayerDetails="*uid://bpftcvfmdoopq"
->>>>>>> Stashed changes
 
 [display]
 
