@@ -44,7 +44,7 @@ offset_top = 212.0
 offset_right = 603.0
 offset_bottom = 876.0
 
-[node name="RichTextLabel" type="TextureRect" parent="Button" unique_id=1245810594]
+[node name="RichTextLabel" type="TextureRect" parent="Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,7 +63,7 @@ offset_top = 208.0
 offset_right = 1193.0
 offset_bottom = 872.0
 
-[node name="RichTextLabel" type="TextureRect" parent="Button2" unique_id=1405880743]
+[node name="RichTextLabel" type="TextureRect" parent="Button2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,7 +82,7 @@ offset_top = 212.0
 offset_right = 1766.0
 offset_bottom = 876.0
 
-[node name="RichTextLabel" type="TextureRect" parent="Button3" unique_id=181952327]
+[node name="RichTextLabel" type="TextureRect" parent="Button3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

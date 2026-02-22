@@ -88,6 +88,7 @@ func take_damage(amount: float):
 	flash_timer = 0.1
 	if current_health <= 0:
 		get_tree().change_scene_to_file("res://ui/death_scene.tscn")
+		queue_free()
 
 func apply_hit_stop(duration: float):
 	Engine.time_scale = 0.05
@@ -124,49 +125,49 @@ func _on_body_entered(body):
 			
 			
 	
-func add_powerups():
-	for each in PlayerDetails.Powerups:
-		match each:
+func add_powerups() -> void:
+	for p in PlayerDetails.Powerups:
+		match p:
 			0:
 				planet_speed += 50
 			1:
-				mass += (50/500)
+				mass += 50.0 / 500.0
 			2:
 				max_health += 50
 			3:
 				planet_speed += 40
 			4:
-				mass += (40/500)
+				mass += 40.0 / 500.0
 			5:
 				max_health += 40
 			6:
 				planet_speed += 67
 			7:
-				mass += (67/500)
+				mass += 67.0 / 500.0
 			8:
 				max_health += 67
 			9:
 				planet_speed += 100
 			10:
-				mass += (100/500)
+				mass += 100.0 / 500.0
 			11:
-				max_health+= 100
+				max_health += 100
 			12:
 				planet_speed += 150
 			13:
-				mass += (150/500)
+				mass += 150.0 / 500.0
 			14:
 				max_health += 150
 			15:
 				planet_speed += 200
 			16:
-				mass += (200/500)
+				mass += 200.0 / 500.0
 			17:
 				max_health += 200
 			18:
 				rotation_speed = 10
-			#19:
-				#is_death = true
+			_:
+				pass
 
 #func _on_laser_body_entered(body: Node2D) -> void:
 	#if body.has_method("take_damage") and body != self:
