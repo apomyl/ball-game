@@ -2,9 +2,19 @@
 
 [ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="1_lotrb"]
 [ext_resource type="Script" uid="uid://ds05vrvc0rtms" path="res://ui/creation.gd" id="1_vusna"]
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://dmphd50yewpog" path="res://assets/backgrounds/bg11.png" id="2_mbx1c"]
 [ext_resource type="Texture2D" uid="uid://0ufccjgyi4bo" path="res://assets/backgrounds/bg22.png" id="3_78o1v"]
 [ext_resource type="Script" uid="uid://cj4ih16vgpbmq" path="res://ui/planet_selector.gd" id="3_vusna"]
+=======
+[ext_resource type="Texture2D" uid="uid://drp8fp3i4w1b7" path="res://assets/backgrounds/background.png" id="2_fkntm"]
+[ext_resource type="Script" path="res://ui/planet_selector.gd" id="3_vusna"]
+>>>>>>> Stashed changes
+=======
+[ext_resource type="Texture2D" uid="uid://drp8fp3i4w1b7" path="res://assets/backgrounds/background.png" id="2_fkntm"]
+[ext_resource type="Script" path="res://ui/planet_selector.gd" id="3_vusna"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://di3ty4hop2e8t" path="res://assets/left.png" id="4_451v5"]
 [ext_resource type="Texture2D" uid="uid://f4bxrljd51iv" path="res://assets/backgrounds/bg23.png" id="4_wqb2q"]
 [ext_resource type="Texture2D" uid="uid://cbfeibxxgvph4" path="res://assets/right.png" id="5_fkntm"]

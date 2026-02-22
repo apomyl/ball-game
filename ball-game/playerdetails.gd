@@ -17,6 +17,21 @@ var sprite_file_paths = [
 	"res://assets/exoplanet5.png"
 ]
 
+var EnemyPaths = {
+	0: "res://planets/pluto.tscn",
+	1: "res://planets/neptune.tscn",
+	2: "res://planets/uranus.tscn",
+	3: "res://planets/saturn.tscn",
+	4: "res://planets/jupiter.tscn",
+	5: "res://planets/mars.tscn",
+	6: "res://planets/earth.tscn",
+	7: "res://planets/venus.tscn",
+	8: "res://planets/mercury.tscn",
+	9: "res://planets/sun.tscn"
+}
+
+var current_enemy_index: int = 0
+
 var UnusedPowerups = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
 
 var PowerupDesc = {
@@ -48,3 +63,16 @@ var PowerupDesc = {
 @export var BaseHealth: float
 
 @export var e_path: String
+
+func advance_enemy():
+	# Update e_path using the current index
+	e_path = EnemyPaths[current_enemy_index]
+	
+	# Increment the index for the next time this is called
+	current_enemy_index += 1
+	
+	# Optional: Reset to 0 if we run out of enemies (looping)
+	if current_enemy_index >= EnemyPaths.size():
+		current_enemy_index = 0
+		
+	print("Next enemy path will be: ", e_path)

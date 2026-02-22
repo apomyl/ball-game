@@ -8,16 +8,22 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="ball-game"
 run/main_scene="uid://cbisgncstjtjh"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+User="*uid://bpftcvfmdoopq"
 PlayerDetails="*res://playerdetails.gd"
+<<<<<<<UpdatedupstreamPlayerDetails="*res://playerdetails.gd"
 
 [display]
 

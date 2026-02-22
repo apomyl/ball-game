@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://dvmbupcfvbsck"]
+
+[ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="1_fdd25"]
+[ext_resource type="Texture2D" uid="uid://dl8ji4d5vktpk" path="res://assets/backgrounds/bg110.png" id="2_nyy6t"]
+[ext_resource type="Texture2D" uid="uid://dubhbsj745cnv" path="res://assets/mercury.png" id="3_fdd25"]
+[ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="4_nqtc5"]
+[ext_resource type="Script" uid="uid://cr8nj4svajp8w" path="res://ui/profiles/battle.gd" id="5_yddmk"]
+
+[sub_resource type="Theme" id="Theme_epxni"]
+default_font = ExtResource("1_fdd25")
+
+[sub_resource type="Gradient" id="Gradient_uowti"]
+offsets = PackedFloat32Array(0.9292237, 0.98630136, 0.98858446, 1)
+colors = PackedColorArray(0, 0, 0, 0.6823034, 0, 0, 0, 1, 0, 0, 0, 0.49803922, 1, 1, 1, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k6dbu"]
+gradient = SubResource("Gradient_uowti")
+width = 1
+height = 1
+
+[sub_resource type="Theme" id="Theme_uowti"]
+default_font = ExtResource("1_fdd25")
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_jh0gb"]
+default_font = ExtResource("1_fdd25")
+default_font_size = 26
+
+[sub_resource type="Theme" id="Theme_87req"]
+default_font = ExtResource("1_fdd25")
+default_font_size = 26
+
+[node name="PlanetProfile" type="Control" unique_id=710961787]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_epxni")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1107785267]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0042518, 0.9931481)
+texture = ExtResource("2_nyy6t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2100063528]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet Side" type="VBoxContainer" parent="HBoxContainer" unique_id=459925512]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Planet" type="TextureRect" parent="HBoxContainer/Planet Side" unique_id=1323517945]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 2
+texture = ExtResource("3_fdd25")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NextButton" type="Button" parent="HBoxContainer/Planet Side" unique_id=98568762]
+layout_mode = 2
+theme = ExtResource("4_nqtc5")
+text = "battle"
+script = ExtResource("5_yddmk")
+
+[node name="Info side" type="MarginContainer" parent="HBoxContainer" unique_id=978669335]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Text Background" type="TextureRect" parent="HBoxContainer/Info side" unique_id=1330267209]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_k6dbu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Info side" unique_id=538712954]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Info side/VBoxContainer" unique_id=504889801]
+layout_mode = 2
+theme = SubResource("Theme_uowti")
+text = "Mercury"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Info side/VBoxContainer" unique_id=1663477746]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Info side/VBoxContainer" unique_id=1444225927]
+layout_mode = 2
+theme = SubResource("Theme_jh0gb")
+theme_override_constants/h_separation = 31
+theme_override_constants/v_separation = 38
+columns = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=525420046]
+layout_mode = 2
+text = "Classification:"
+
+[node name="Label2" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=135798052]
+layout_mode = 2
+text = "Rocky"
+
+[node name="Label3" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1813994209]
+layout_mode = 2
+text = "Radius:"
+
+[node name="Label4" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=2053898097]
+layout_mode = 2
+text = "2,439.7 km"
+
+[node name="Label5" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1393353011]
+layout_mode = 2
+text = "Orbital Period:"
+
+[node name="Label6" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=911592648]
+layout_mode = 2
+text = "88 Days"
+
+[node name="Label7" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1192312739]
+layout_mode = 2
+text = "Surface Temperature:"
+
+[node name="Label8" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=698303983]
+layout_mode = 2
+text = "167 °C"
+
+[node name="Label9" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1904630081]
+layout_mode = 2
+text = "Moons:"
+
+[node name="Label10" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1552002914]
+layout_mode = 2
+text = "0"
+
+[node name="Label11" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1738724032]
+layout_mode = 2
+text = "Composition:"
+
+[node name="Label12" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=448697966]
+layout_mode = 2
+text = "Rock & Metal"
+
+[node name="Label13" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=810349504]
+layout_mode = 2
+text = "Special Ability:"
+
+[node name="Label14" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=339382040]
+layout_mode = 2
+text = "Hot & cold"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Info side/VBoxContainer" unique_id=924161815]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Info side/VBoxContainer" unique_id=1782363151]
+layout_mode = 2
+theme = SubResource("Theme_87req")
+text = "Due to its proximity to the sun, Mercury has a harsh surface. Temperatures on the side facing the sun reach a scorching 430°C, while at the same time the other side is at -180°C. This contrast is made possible by Mercury's lack of an atmosphere to trap heat."
+fit_content = true
+
+[connection signal="pressed" from="HBoxContainer/Planet Side/NextButton" to="HBoxContainer/Planet Side/NextButton" method="_on_pressed"]
