@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bxr63040mxn5v"]
+
+[ext_resource type="Script" uid="uid://d1uewsr35ppac" path="res://ui/battles/battle.gd" id="1_7ye11"]
+[ext_resource type="PackedScene" uid="uid://die44hlvewhfn" path="res://walls.tscn" id="1_a1u14"]
+[ext_resource type="PackedScene" uid="uid://s3ly1a2ffail" path="res://player.tscn" id="4_inopt"]
+
+[node name="Battle" type="Node2D" unique_id=1170580095]
+scale = Vector2(0.9957995, 1.0024515)
+script = ExtResource("1_7ye11")
+
+[node name="Walls" parent="." unique_id=1034601366 instance=ExtResource("1_a1u14")]
+position = Vector2(96.404945, 52.87039)
+scale = Vector2(1.199344, 1.2366047)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=903737797]
+position = Vector2(3, 0)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Player" parent="." unique_id=1980910126 instance=ExtResource("4_inopt")]
+position = Vector2(-1486, 24)

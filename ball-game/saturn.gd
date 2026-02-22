@@ -2,7 +2,7 @@ extends RigidBody2D
 
 # --- SATURN SETTINGS ---
 @export var planet_name: String = "Saturn"
-@export var planet_speed: float = 300.0
+@export var planet_speed: float = 700.0
 @export var max_health: float = 300.0
 @export var rotation_speed: float = 1.5
 @export var radius: float = 260.0

@@ -2,7 +2,7 @@ extends RigidBody2D
 
 # --- NEPTUNE SETTINGS ---
 @export var planet_name: String = "Neptune"
-@export var planet_speed: float = 500.0
+@export var planet_speed: float = 600.0
 @export var max_health: float = 250.0
 @export var radius: float = 200.0
 @export var damage_multiplier: float = 0.0001 

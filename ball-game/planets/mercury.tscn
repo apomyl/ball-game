@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://b57bl6unto8js"]
+[gd_scene format=3 uid="uid://b57bl6unto8js"]
 
 [ext_resource type="Script" uid="uid://b5qjpllmel31k" path="res://planets/mercury.gd" id="1_is82n"]
 [ext_resource type="Texture2D" uid="uid://dubhbsj745cnv" path="res://assets/mercury.png" id="2_sv2gw"]

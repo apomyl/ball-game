@@ -2,7 +2,7 @@ extends RigidBody2D
 
 # --- PLANET SETTINGS ---
 @export var planet_name: String = "Earth"
-@export var planet_speed: float = 500.0
+@export var planet_speed: float = 1200.0
 @export var max_health: float = 300.0 
 @export var radius: float = 190.0
 @export var damage_multiplier: float = 0.0001 # Tune this to scale difficulty

@@ -2,10 +2,10 @@ extends RigidBody2D
 
 # --- PLUTO SETTINGS ---
 @export var planet_name: String = "Player"
-@export var planet_speed: float = 500.0
-@export var max_health: float = 500.0
+@export var planet_speed: float = 1000.0
+@export var max_health: float = 100.0
 @export var rotation_speed: float = 2.5
-@export var radius: float = 90.0
+@export var radius: float = 200.0
 @export var damage_multiplier: float = 0.001
 
 # --- INTERNAL STATE ---
@@ -19,7 +19,7 @@ func _ready():
 	self.scale = Vector2(1/PlayerDetails.sprite_scale[PlayerDetails.PlanetName], 1/PlayerDetails.sprite_scale[PlayerDetails.PlanetName])
 	$Image.texture = load(PlayerDetails.sprite_file_paths[PlayerDetails.PlanetName])
 	$Image.scale = Vector2(PlayerDetails.sprite_scale[PlayerDetails.PlanetName], PlayerDetails.sprite_scale[PlayerDetails.PlanetName])
-
+	
 	add_powerups()
 
 	current_health = max_health
@@ -51,13 +51,22 @@ func _integrate_forces(state):
 	state.angular_velocity = rotation_speed
 
 func _draw():
-	# Draw a simple health bar
-	var hp_pct = clamp(current_health / max_health, 0.0, 1.0)
-	var bar_width = radius * 1.2
-	var bar_pos = Vector2(-bar_width / 2, -radius - 30)
+	# 1. WEAPON ARC
+	var arc_radius = radius + 20
+	var arc_color = Color(1, 1, 1, 1) if flash_timer > 0 else Color(0.88, 0.76, 0.77, 1.0)
+	draw_arc(Vector2.ZERO, arc_radius, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 10.0)
 	
-	draw_rect(Rect2(bar_pos, Vector2(bar_width, 10)), Color.BLACK)
-	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, 10)), Color.WHITE.lerp(Color.RED, 1.0 - hp_pct))
+	# 2. HEALTH BAR
+	var hp_pct = clamp(float(current_health) / float(max_health), 0.0, 1.0)
+	var bar_width = radius * 1.2
+	var bar_height = 10
+	var bar_pos = Vector2(-bar_width / 2, -radius - 50)
+	
+	# Background
+	draw_rect(Rect2(bar_pos, Vector2(bar_width, bar_height)), Color.BLACK)
+	# Health Fill (Lerps Green to Red)
+	var health_color = Color.GREEN.lerp(Color.RED, 1.0 - hp_pct)
+	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, bar_height)), health_color)
 
 func take_damage(amount: float):
 	current_health -= amount
@@ -100,4 +109,3 @@ func _on_body_entered(body):
 	
 func add_powerups():
 	pass
-	

@@ -46,3 +46,5 @@ var PowerupDesc = {
 @export var Speed: float
 @export var Mass: float
 @export var BaseHealth: float
+
+@export var e_path: String

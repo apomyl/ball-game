@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bxj4q8v7tb7hw"]
 
 [ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="1_rt5r6"]
-[ext_resource type="Texture2D" uid="uid://q0hj15cweyjv" path="res://assets/backgrounds/bg110.png" id="2_5gyln"]
+[ext_resource type="Texture2D" uid="uid://dl8ji4d5vktpk" path="res://assets/backgrounds/bg110.png" id="2_5gyln"]
 [ext_resource type="Texture2D" uid="uid://4b2fahdyv0r" path="res://assets/pluto.png" id="3_k152i"]
 [ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="4_fwws5"]
+[ext_resource type="Script" uid="uid://cr8nj4svajp8w" path="res://ui/profiles/pluto_battle.gd" id="5_k152i"]
 
 [sub_resource type="Theme" id="Theme_epxni"]
 default_font = ExtResource("1_rt5r6")
@@ -73,6 +74,7 @@ stretch_mode = 5
 layout_mode = 2
 theme = ExtResource("4_fwws5")
 text = "battle"
+script = ExtResource("5_k152i")
 
 [node name="Info side" type="MarginContainer" parent="HBoxContainer" unique_id=978669335]
 layout_mode = 2
@@ -170,3 +172,5 @@ layout_mode = 2
 theme = SubResource("Theme_87req")
 text = "Pluto is the smallest and most resilient planet, fueled by a relentless drive to survive against the odds. Its ability, Dwarf Planet’s Revenge, scales its offensive power as it takes damage, causing it to deal massive damage at low health in an attempt to make a comeback."
 fit_content = true
+
+[connection signal="pressed" from="HBoxContainer/Planet Side/NextButton" to="HBoxContainer/Planet Side/NextButton" method="_on_pressed"]
