@@ -1,7 +1,7 @@
-extends Resource
+extends Node
 class_name user
 
-@export_enum("Jinzor", "Pacoria IX", "Apostis Major", "Selenara", "Sangor Prime") var planet_name: int
+@export_enum("Jinzor", "Pacoria IX", "Apostis Major", "Selenara", "Sangor Prime") var PlanetName: int
 var sprite_scale = [
 	1,
 	0.93,
@@ -17,4 +17,7 @@ var sprite_file_paths = [
 	"res://assets/exoplanet5.png"
 ]
 
-@export var powerups: Array[String]
+@export var Powerups: Array[String]
+@export var Speed: float
+@export var Mass: float
+@export var BaseHealth: float

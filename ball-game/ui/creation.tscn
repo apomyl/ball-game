@@ -24,35 +24,96 @@ offset_right = 685.0
 offset_bottom = 693.0
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SliderContainer" unique_id=1893297790]
+[node name="SpeedLabelContainer" type="GridContainer" parent="SliderContainer" unique_id=1086003814]
+layout_mode = 2
+columns = 2
+
+[node name="Speed" type="RichTextLabel" parent="SliderContainer/SpeedLabelContainer" unique_id=1893297790]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_lotrb")
+bbcode_enabled = true
+text = "[font_size=45]Speed[/font_size]"
+fit_content = true
+vertical_alignment = 2
+
+[node name="SpeedValue" type="RichTextLabel" parent="SliderContainer/SpeedLabelContainer" unique_id=1694966692]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_lotrb")
+bbcode_enabled = true
+text = "[font_size=20]000/500[/font_size]"
+fit_content = true
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="SpeedSlider" type="HSlider" parent="SliderContainer" unique_id=999440617]
 layout_mode = 2
 theme = ExtResource("1_lotrb")
-text = "Speed"
+min_value = 1.0
+value = 1.0
+
+[node name="MassLabelContainer" type="GridContainer" parent="SliderContainer" unique_id=256549846]
+layout_mode = 2
+columns = 2
+
+[node name="Mass" type="RichTextLabel" parent="SliderContainer/MassLabelContainer" unique_id=431006261]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("1_lotrb")
+bbcode_enabled = true
+text = "[font_size=45]Mass[/font_size]"
 fit_content = true
 
-[node name="HSlider" type="HSlider" parent="SliderContainer" unique_id=999440617]
+[node name="MassValue" type="RichTextLabel" parent="SliderContainer/MassLabelContainer" unique_id=1307242866]
+layout_direction = 3
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("1_lotrb")
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="SliderContainer" unique_id=431006261]
-layout_mode = 2
-theme = ExtResource("1_lotrb")
-text = "Mass"
+bbcode_enabled = true
+text = "[font_size=20]000/500[/font_size]"
 fit_content = true
+horizontal_alignment = 2
+vertical_alignment = 2
 
-[node name="HSlider2" type="HSlider" parent="SliderContainer" unique_id=582932542]
+[node name="MassSlider" type="HSlider" parent="SliderContainer" unique_id=582932542]
 layout_mode = 2
 theme = ExtResource("1_lotrb")
+min_value = 1.0
+value = 1.0
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="SliderContainer" unique_id=1936301628]
+[node name="HealthLabelContainer" type="GridContainer" parent="SliderContainer" unique_id=1091777691]
 layout_mode = 2
+columns = 2
+
+[node name="Health" type="RichTextLabel" parent="SliderContainer/HealthLabelContainer" unique_id=995544023]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("1_lotrb")
-text = "Size"
+bbcode_enabled = true
+text = "[font_size=45]Health[/font_size]"
 fit_content = true
+vertical_alignment = 2
 
-[node name="HSlider3" type="HSlider" parent="SliderContainer" unique_id=1410190916]
+[node name="HealthValue" type="RichTextLabel" parent="SliderContainer/HealthLabelContainer" unique_id=1956473987]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_lotrb")
+bbcode_enabled = true
+text = "[font_size=20]000/500[/font_size]"
+fit_content = true
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="HealthSlider" type="HSlider" parent="SliderContainer" unique_id=1410190916]
 layout_mode = 2
 theme = ExtResource("1_lotrb")
+min_value = 1.0
+value = 1.0
 
 [node name="Planet Selector" type="Control" parent="." unique_id=1041985243]
 anchors_preset = 0
@@ -127,4 +188,7 @@ offset_bottom = 972.0
 theme = ExtResource("1_lotrb")
 text = "go"
 
+[connection signal="drag_ended" from="SliderContainer/SpeedSlider" to="." method="_on_speed_slider_drag_ended"]
+[connection signal="drag_ended" from="SliderContainer/MassSlider" to="." method="_on_mass_slider_drag_ended"]
+[connection signal="drag_ended" from="SliderContainer/HealthSlider" to="." method="_on_health_slider_drag_ended"]
 [connection signal="pressed" from="Go" to="." method="_on_go_pressed"]

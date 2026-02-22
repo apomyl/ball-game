@@ -1,9 +1,24 @@
 [gd_resource type="Theme" format=3 uid="uid://bp6vqjk6b7nwq"]
 
-[ext_resource type="FontFile" uid="uid://b4n5v84ypqf5g" path="res://assets/Cosmo Corner PERSONAL USE ONLY!.ttf" id="1_5x3i2"]
+[ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="1_wl1kw"]
+[ext_resource type="Texture2D" uid="uid://0alqrsr2ryxm" path="res://assets/Black_hole.png" id="2_wl1kw"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5x3i2"]
+color = Color(1.2032688e-06, 0.54489017, 0.5315167, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wl1kw"]
+color = Color(0.65882355, 0.19215687, 0.9019608, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_lu33j"]
+color = Color(0.89411765, 0.15294118, 0.24705882, 1)
+thickness = 9
 
 [resource]
-default_font = ExtResource("1_5x3i2")
+default_font = ExtResource("1_wl1kw")
 default_font_size = 100
-Button/fonts/font = ExtResource("1_5x3i2")
+Button/fonts/font = ExtResource("1_wl1kw")
 Button/styles/disabled = null
+HSlider/icons/grabber = ExtResource("2_wl1kw")
+HSlider/styles/grabber_area = SubResource("StyleBoxLine_5x3i2")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxLine_wl1kw")
+HSlider/styles/slider = SubResource("StyleBoxLine_lu33j")
