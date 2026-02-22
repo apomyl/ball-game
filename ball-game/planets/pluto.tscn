@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://din1ec7v5mc3t"]
 
 [ext_resource type="Script" uid="uid://g57hjouxkorr" path="res://pluto.gd" id="1_hklr6"]
-[ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="2_q3ec0"]
+[ext_resource type="Texture2D" uid="uid://4b2fahdyv0r" path="res://assets/pluto.png" id="2_hklr6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
 friction = 0.0
@@ -30,7 +30,8 @@ scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_em3ml")
 
 [node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
-texture = ExtResource("2_q3ec0")
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_hklr6")
 
 [node name="weaponhitbox" type="Area2D" parent="." unique_id=596913455]
 collision_layer = 0

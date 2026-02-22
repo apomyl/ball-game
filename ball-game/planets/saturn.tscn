@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqimp0qy231j5"]
 
 [ext_resource type="Script" uid="uid://bevtd6akhoisp" path="res://saturn.gd" id="1_nrygb"]
-[ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="2_6y7jd"]
+[ext_resource type="Texture2D" uid="uid://bh4q4ukwfcro5" path="res://assets/saturn.png" id="2_nrygb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
 friction = 0.0
@@ -29,8 +29,8 @@ scale = Vector2(1.4, 1.4)
 shape = SubResource("CircleShape2D_em3ml")
 
 [node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
-scale = Vector2(2.3, 2.3)
-texture = ExtResource("2_6y7jd")
+scale = Vector2(2.2, 2.3)
+texture = ExtResource("2_nrygb")
 
 [node name="weaponhitbox" type="Area2D" parent="." unique_id=596913455]
 collision_layer = 0

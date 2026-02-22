@@ -6,7 +6,7 @@ extends RigidBody2D
 @export var max_health: float = 300.0    # But fragile.
 @export var rotation_speed: float = 4.0  # Spins faster
 @export var radius: float = 90.0
-@export var damage_multiplier: float = 0.001 # Balanced for 1000+ speeds
+@export var damage_multiplier: float = 0.0002 # Balanced for 1000+ speeds
 
 # --- INTERNAL STATE ---
 var current_health: float
@@ -48,9 +48,11 @@ func _integrate_forces(state):
 	state.angular_velocity = rotation_speed
 
 func _draw():
-	# Visual indicator of the damage zone (The Red Arc)
-	var arc_color = Color(1, 1, 1, 1) if flash_timer > 0 else Color(1, 0.2, 0.2, 0.4)
-	draw_arc(Vector2.ZERO, radius, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 6.0)
+	var arc_radius = radius + 20
+	var arc_color = Color(1, 1, 1, 1) if flash_timer > 0 else Color(0.88, 0.767, 0.776, 1.0)
+	
+	# Drawing the offset arc
+	draw_arc(Vector2.ZERO, arc_radius, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 6.0)
 	
 	# Health Bar
 	var hp_pct = clamp(current_health / max_health, 0.0, 1.0)

@@ -107,8 +107,10 @@ func _integrate_forces(state):
 	state.angular_velocity = 0.5 
 
 func _draw():
-	var arc_color = Color(1, 1, 1, 1) if flash_timer > 0 else Color(0.88, 0.0, 0.774, 0.4)
-	draw_arc(Vector2.ZERO, radius + 15, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 10.0)
+	var arc_radius = radius + 20 
+	var arc_color = Color(1, 1, 1, 1) if flash_timer > 0 else Color(0.0, 0.574, 0.767, 1.0)
+	draw_arc(Vector2.ZERO, arc_radius, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 10.0)
+	
 	var hp_pct = clamp(current_health / max_health, 0.0, 1.0)
 	var bar_pos = Vector2(-75, -radius - 70) 
 	var bar_width = 100

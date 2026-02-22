@@ -5,118 +5,117 @@ extends RigidBody2D
 @export var planet_speed: float = 400.0
 @export var max_health: float = 100.0
 @export var rotation_speed: float = 2.0 
+@export var radius: float = 180.0 # Standardized radius
+@export var damage_multiplier: float = 0.00015 # Tuned for Mars' speed
 
 var current_health: float
 var flash_timer: float = 0.0
 
 # --- SHOOTING STATS ---
-# Make sure this path exactly matches where you saved your meteor scene!
 var meteor_scene = preload("res://planets/meteor.tscn") 
 var shoot_cooldown: float = 2.0 
 var shoot_timer: float = 0.0
 
 func _ready():
 	current_health = max_health
+	randomize()
 	
 	# 1. SETUP PHYSICS
 	contact_monitor = true
 	max_contacts_reported = 5
-	collision_layer = 1
-	collision_mask = 1
 	
-	# 2. FIND AND CONNECT THE HITBOX 
-	# (Check your scene tree: make sure the capitalization matches exactly!)
+	# 2. HITBOX SETUP
 	var hitbox = get_node_or_null("WeaponHitbox")
 	if hitbox:
-		hitbox.collision_layer = 0 # It doesn't need to be hit
-		hitbox.collision_mask = 1  # It MUST look at Layer 1
-	else:
-		push_error("Error: Could not find a node named 'WeaponHitbox' under ", name)
-
-	# 3. SET INITIAL VELOCITY
+		hitbox.collision_layer = 0
+		hitbox.collision_mask = 1 
+	
+	# 3. INITIAL VELOCITY
 	await get_tree().physics_frame
 	var random_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
 	linear_velocity = random_dir * planet_speed
 	
-	# 4. CONNECT RIGIDBODY COLLISION SIGNAL
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
 
 func _process(delta):
-	# 1. VISUAL DAMAGE FLASH LOGIC
 	if flash_timer > 0:
 		flash_timer -= delta
-		queue_redraw() # Tells _draw() to update the screen
+		queue_redraw()
 
-	# 2. THE SHOOTING CLOCK
 	shoot_timer += delta
 	if shoot_timer >= shoot_cooldown:
 		shoot_timer = 0.0
 		shoot_volcano()
 
-# --- DRAWING THE HEALTH BAR AND HITBOX ARC ---
+# --- DRAWING (With Saturn-style offset arc) ---
 func _draw():
-	# 1. Visual indicator of the damage zone (Radius at 200)
-	var radius = 200
-	var arc_color = Color(1, 1, 1, 1) if flash_timer > 0 else Color(1, 0, 0, 0.4)
-	draw_arc(Vector2.ZERO, radius, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 6.0)
+	# Use an offset so the arc floats slightly off the planet
+	var arc_radius = radius + 20
+	var arc_color = Color(1, 1, 1, 1) if flash_timer > 0 else Color(1, 0.4, 0.0, 0.4) # Martian Orange
 	
-	# 2. Simple Health Bar
-	var hp_pct = current_health / max_health
+	# Damage zone arc
+	draw_arc(Vector2.ZERO, arc_radius, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 8.0)
+	
+	# Health Bar positioned above the arc
+	var hp_pct = clamp(current_health / max_health, 0.0, 1.0)
 	var bar_width = 120
-	var bar_height = 12
-	# Position it at -240 so it clears the 200px radius of the planet
-	var bar_pos = Vector2(-bar_width / 2, -radius - 40) 
+	var bar_pos = Vector2(-bar_width / 2, -arc_radius - 40) 
 	
-	# Draw Background (Black)
-	draw_rect(Rect2(bar_pos, Vector2(bar_width, bar_height)), Color.BLACK)
-	
-	# Draw Health (Green/Red)
-	var current_width = bar_width * clamp(hp_pct, 0.0, 1.0)
-	var health_color = Color.GREEN.lerp(Color.RED, 1.0 - hp_pct)
-	draw_rect(Rect2(bar_pos, Vector2(current_width, bar_height)), health_color)
+	draw_rect(Rect2(bar_pos, Vector2(bar_width, 12)), Color.BLACK)
+	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, 12)), Color.ORANGE_RED.lerp(Color.RED, 1.0 - hp_pct))
 
-# --- MOVEMENT PHYSICS ---
 func _integrate_forces(state):
-	# This constantly forces the planet to move at exactly planet_speed
-	# and constantly rotates it like a spinning top
 	if state.linear_velocity.length() > 0:
 		state.linear_velocity = state.linear_velocity.normalized() * planet_speed
 	state.angular_velocity = rotation_speed
 
-# --- SHOOTING LOGIC ---
+func apply_hit_stop(duration: float):
+	Engine.time_scale = 0.05
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1.0
+
 func shoot_volcano():
-	print(planet_name + " fired a meteor!")
-	
 	var new_meteor = meteor_scene.instantiate()
 	get_tree().current_scene.add_child.call_deferred(new_meteor)
 	
-	# Since _integrate_forces makes the planet spin rapidly, we shoot in the direction of its movement, not its rotation
 	var forward_direction = linear_velocity.normalized()
-	if forward_direction == Vector2.ZERO:
-		forward_direction = Vector2(1, 0)
+	if forward_direction == Vector2.ZERO: forward_direction = Vector2(1, 0)
 		
 	new_meteor.global_position = global_position + (forward_direction * 60.0)
 	new_meteor.add_collision_exception_with(self)
 	new_meteor.linear_velocity = forward_direction * 1500.0
 
-# --- DAMAGE AND COLLISION LOGIC ---
 func take_damage(amount: float):
 	current_health -= amount
-	flash_timer = 0.1 # Triggers the visual flash
-	print(name, " took damage! Remaining HP: ", current_health)
-	
+	flash_timer = 0.1
 	if current_health <= 0:
-		print(name, " was destroyed!")
 		queue_free()
 		
+# --- UPDATED DYNAMIC DAMAGE LOGIC ---
 func _on_body_entered(body):
-	if body.has_method("take_damage"):
-		# Match capitalization with the string in _ready()!
+	if body.has_method("take_damage") and body != self:
 		var hitbox = get_node_or_null("WeaponHitbox")
 		
 		if hitbox and hitbox.overlaps_body(body):
-			print("CRITICAL HIT: Mars slammed into something!")
-			body.take_damage(20)
+			# CALCULATE DAMAGE BASED ON MARS' OWN STATS
+			var my_speed = linear_velocity.length()
+			var impact_energy = (mass * (my_speed ** 2))
+			var calculated_damage = impact_energy * damage_multiplier
+			
+			# Clamp damage for balance
+			calculated_damage = clamp(calculated_damage, 10.0, 60.0)
+			
+			print("MARS KINETIC STRIKE! Damage: ", int(calculated_damage))
+			body.take_damage(calculated_damage)
+			
+			apply_hit_stop(0.06)
+			flash_timer = 0.2
+			
+			if body is RigidBody2D:
+				var push_dir = (body.global_position - global_position).normalized()
+				body.linear_velocity = Vector2.ZERO 
+				body.apply_central_impulse(push_dir * 1000.0)
 		else:
-			print("Normal Bump: Hit outside of weapon zone.")
+			# Normal chip damage for side-bumps
+			body.take_damage(2)
