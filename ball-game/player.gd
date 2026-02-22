@@ -16,9 +16,9 @@ var flash_timer: float = 0.0
 
 func _ready():
 	#scaling the sprites so that the hitboxes fit the sprite while keeping their size
-	self.scale = Vector2(1/PlayerDetails.sprite_scale[PlayerDetails.planet_name], 1/PlayerDetails.sprite_scale[PlayerDetails.planet_name])
-	$Image.texture = PlayerDetails.sprite_file_paths[PlayerDetails.planet_name]
-	$Image.scale = Vector2(PlayerDetails.sprite_scale[PlayerDetails.planet_name], PlayerDetails.sprite_scale[PlayerDetails.planet_name])
+	self.scale = Vector2(1/PlayerDetails.sprite_scale[PlayerDetails.PlanetName], 1/PlayerDetails.sprite_scale[PlayerDetails.PlanetName])
+	$Image.texture = load(PlayerDetails.sprite_file_paths[PlayerDetails.PlanetName])
+	$Image.scale = Vector2(PlayerDetails.sprite_scale[PlayerDetails.PlanetName], PlayerDetails.sprite_scale[PlayerDetails.PlanetName])
 
 	add_powerups()
 

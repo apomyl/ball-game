@@ -14,7 +14,7 @@ func _ready() -> void:
 	update_ui()
 	
 func _on_go_pressed() -> void:
-	PlayerDetails.planet_name = $"Planet Selector".index
+	PlayerDetails.PlanetName = $"Planet Selector".index
 	PlayerDetails.Speed = speed_slider.value
 	PlayerDetails.Mass = mass_slider.value
 	PlayerDetails.BaseHealth = health_slider.value
