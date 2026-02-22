@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c1axn8vp1hgad"]
+[gd_scene format=3 uid="uid://s3ly1a2ffail"]
 
 [ext_resource type="PackedScene" uid="uid://dgw4tkllph668" path="res://planets/ball.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://chg7plb5adtaj" path="res://player.gd" id="2_i3pqv"]
@@ -14,11 +14,14 @@ planet_speed = 1000.0
 max_health = 100.0
 rotation_speed = 2.5
 radius = 200.0
-damage_multiplier = 0.001
+damage_multiplier = 0.003
 
 [node name="Image" parent="." index="1" unique_id=1652644095]
 scale = Vector2(0.93, 0.93)
 texture = ExtResource("3_hqtel")
+
+[node name="CollisionShape2D" parent="weaponhitbox" parent_id_path=PackedInt32Array(596913455) index="0" unique_id=881282358]
+position = Vector2(99.5, 3.4999943)
 
 [node name="laser" type="Area2D" parent="." index="3" unique_id=160404226]
 visible = false

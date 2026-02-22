@@ -80,6 +80,11 @@ var PowerupDesc = {
 @export var e_path: String
 @export var p_path = EnemyProfiles.get(0)
 
+func restart():
+	e_path = EnemyPaths[0]
+	p_path = EnemyProfiles[0]
+	current_enemy_index = 0
+
 func advance_enemy():
 	# Update e_path using the current index
 	e_path = EnemyPaths[current_enemy_index]

@@ -8,10 +8,10 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_em3ml"]
-radius = 148.34268
+radius = 203.34015
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_em3ml"]
-size = Vector2(147.49998, 298.3333)
+size = Vector2(205.83331, 406.66666)
 
 [node name="Pluto" type="RigidBody2D" unique_id=612661867]
 mass = 0.25
@@ -21,6 +21,7 @@ continuous_cd = 2
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_hklr6")
+radius = 130.0
 
 [node name="circleshape2d" type="CollisionShape2D" parent="." unique_id=40652161]
 scale = Vector2(0.6, 0.6)
@@ -28,14 +29,14 @@ shape = SubResource("CircleShape2D_em3ml")
 
 [node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
 position = Vector2(0, 1.2499962)
-scale = Vector2(0.55, 0.555)
+scale = Vector2(0.75, 0.757)
 texture = ExtResource("2_hklr6")
 
 [node name="weaponhitbox" type="Area2D" parent="." unique_id=596913455]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weaponhitbox" unique_id=881282358]
-position = Vector2(44.750004, -2.4999955)
+position = Vector2(62.25, -2.999998)
 scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_em3ml")
 

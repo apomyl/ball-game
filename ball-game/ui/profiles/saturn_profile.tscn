@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://7ldhjhkyni5d"]
+[gd_scene format=3 uid="uid://7ldhjhkyni5d"]
 
 [ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="1_hq6uv"]
 [ext_resource type="Texture2D" uid="uid://dl8ji4d5vktpk" path="res://assets/backgrounds/bg110.png" id="2_8lnch"]
@@ -31,7 +31,7 @@ default_font_size = 26
 default_font = ExtResource("1_hq6uv")
 default_font_size = 26
 
-[node name="PlanetProfile" type="Control" unique_id=710961787]
+[node name="PlanetProfile2" type="Control" unique_id=710961787]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,86 +88,93 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 texture = SubResource("GradientTexture2D_k6dbu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Info side" unique_id=538712954]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Info side" unique_id=109521163]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Info side/MarginContainer" unique_id=538712954]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/Info side/VBoxContainer" unique_id=504889801]
+[node name="Label" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer" unique_id=504889801]
 layout_mode = 2
 theme = SubResource("Theme_uowti")
 text = "Saturn"
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Info side/VBoxContainer" unique_id=1663477746]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer" unique_id=1663477746]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Info side/VBoxContainer" unique_id=1444225927]
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer" unique_id=1444225927]
 layout_mode = 2
 theme = SubResource("Theme_jh0gb")
 theme_override_constants/h_separation = 31
 theme_override_constants/v_separation = 38
 columns = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=525420046]
+[node name="Label" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=525420046]
 layout_mode = 2
 text = "Classification:"
 
-[node name="Label2" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=135798052]
+[node name="Label2" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=135798052]
 layout_mode = 2
 text = "Gas Giant"
 
-[node name="Label3" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1813994209]
+[node name="Label3" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=1813994209]
 layout_mode = 2
 text = "Radius:"
 
-[node name="Label4" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=2053898097]
+[node name="Label4" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=2053898097]
 layout_mode = 2
 text = "58,232 km"
 
-[node name="Label5" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1393353011]
+[node name="Label5" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=1393353011]
 layout_mode = 2
 text = "Orbital Period:"
 
-[node name="Label6" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=911592648]
+[node name="Label6" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=911592648]
 layout_mode = 2
 text = "29.45 Years"
 
-[node name="Label7" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1192312739]
+[node name="Label7" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=1192312739]
 layout_mode = 2
 text = "Surface Temperature:"
 
-[node name="Label8" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=698303983]
+[node name="Label8" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=698303983]
 layout_mode = 2
 text = "-140°C"
 
-[node name="Label9" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1904630081]
+[node name="Label9" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=1904630081]
 layout_mode = 2
 text = "Moons:"
 
-[node name="Label10" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1552002914]
+[node name="Label10" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=1552002914]
 layout_mode = 2
 text = "146"
 
-[node name="Label11" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=1738724032]
+[node name="Label11" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=1738724032]
 layout_mode = 2
 text = "Composition:"
 
-[node name="Label12" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=448697966]
+[node name="Label12" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=448697966]
 layout_mode = 2
 text = "H, He"
 
-[node name="Label13" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=810349504]
+[node name="Label13" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=810349504]
 layout_mode = 2
 text = "Special Ability:"
 
-[node name="Label14" type="Label" parent="HBoxContainer/Info side/VBoxContainer/GridContainer" unique_id=339382040]
+[node name="Label14" type="Label" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer/GridContainer" unique_id=339382040]
 layout_mode = 2
 text = "Rings"
 
-[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Info side/VBoxContainer" unique_id=924161815]
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer" unique_id=924161815]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Info side/VBoxContainer" unique_id=1782363151]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Info side/MarginContainer/VBoxContainer" unique_id=1782363151]
 layout_mode = 2
 theme = SubResource("Theme_87req")
 text = "Uranus is the second largest planet in the solar system, renowned for its dazzling ring system. Approaching it will be dangerous as the hundreds of orbiting objects will slow you and harm you."

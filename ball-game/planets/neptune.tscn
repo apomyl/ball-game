@@ -17,13 +17,14 @@ size = Vector2(325.83334, 654.99994)
 radius = 166.08566
 
 [node name="Neptune" type="RigidBody2D" unique_id=612661867]
-mass = 1.8
+mass = 0.905
 physics_material_override = SubResource("PhysicsMaterial_cbx31")
 gravity_scale = 0.0
 continuous_cd = 2
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_p2bt7")
+max_health = 300.0
 
 [node name="circleshape2d" type="CollisionShape2D" parent="." unique_id=40652161]
 scale = Vector2(1.4, 1.4)

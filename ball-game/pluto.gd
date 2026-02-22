@@ -96,7 +96,7 @@ func _on_body_entered(body):
 			
 			print("PLUTO SELF-POWERED HIT! Damage: ", int(calculated_damage))
 			
-			body.take_damage(calculated_damage + (max_health-current_health)/5)
+			body.take_damage(calculated_damage + (max_health-current_health)/10)
 			apply_hit_stop(0.08)
 			flash_timer = 0.2
 			
