@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxr63040mxn5v"]
+[gd_scene format=3 uid="uid://bxr63040mxn5v"]
 
 [ext_resource type="Script" uid="uid://d1uewsr35ppac" path="res://ui/battles/battle.gd" id="1_7ye11"]
 [ext_resource type="PackedScene" uid="uid://die44hlvewhfn" path="res://walls.tscn" id="1_a1u14"]
@@ -40,11 +40,11 @@ frame_9/duration = 1.0
 frame_10/texture = ExtResource("4_3kqpy")
 frame_10/duration = 1.0
 
-[node name="Battle" type="Node2D"]
+[node name="Battle" type="Node2D" unique_id=864999141]
 scale = Vector2(0.9957995, 1.0024515)
 script = ExtResource("1_7ye11")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=675330770]
 z_index = -1
 custom_minimum_size = Vector2(1000, 1000)
 anchors_preset = 15
@@ -60,13 +60,13 @@ texture = SubResource("AnimatedTexture_njhxl")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Walls" parent="." instance=ExtResource("1_a1u14")]
-position = Vector2(96.404945, 52.87039)
-scale = Vector2(1.199344, 1.2366047)
+[node name="Walls" parent="." unique_id=945195309 instance=ExtResource("1_a1u14")]
+position = Vector2(89.37542, 33.91685)
+scale = Vector2(1.2, 1.2)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1828277977]
 position = Vector2(3, 0)
 zoom = Vector2(0.5, 0.5)
 
-[node name="Player" parent="." instance=ExtResource("4_inopt")]
+[node name="Player" parent="." unique_id=869099439 instance=ExtResource("4_inopt")]
 position = Vector2(-1486, 24)

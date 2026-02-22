@@ -9,7 +9,7 @@ extends RigidBody2D
 @export var damage_multiplier: float = 0.0001 
 
 # --- DASH SETTINGS ---
-@export var dash_interval: float = 1.0
+@export var dash_interval: float = 2.5
 @export var dash_boost: float = 50.0 # How much speed increases per dash
 var dash_timer: float = 0.0
 

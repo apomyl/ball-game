@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://b8jxcvqp3sp8v"]
+[gd_scene format=3 uid="uid://b8jxcvqp3sp8v"]
 
 [ext_resource type="Script" uid="uid://bhqjrlfobjjv6" path="res://uranus.gd" id="1_fnguc"]
 [ext_resource type="Texture2D" uid="uid://mhhif5kh1uau" path="res://assets/uranus.png" id="2_fnguc"]
@@ -14,7 +14,7 @@ radius = 351.14496
 size = Vector2(347.49994, 698.3333)
 
 [node name="Uranus" type="RigidBody2D" unique_id=612661867]
-mass = 0.5
+mass = 0.7
 physics_material_override = SubResource("PhysicsMaterial_cbx31")
 gravity_scale = 0.0
 continuous_cd = 2

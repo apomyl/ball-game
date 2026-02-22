@@ -3,13 +3,13 @@ extends RigidBody2D
 # --- NEPTUNE SETTINGS ---
 @export var planet_name: String = "Neptune"
 @export var planet_speed: float = 600.0
-@export var max_health: float = 250.0
+@export var max_health: float = 300.0
 @export var radius: float = 200.0
-@export var damage_multiplier: float = 0.0001 
+@export var damage_multiplier: float = 0.0002
 
 @export var storm_slow_factor: float = 0.3 
 @export var storm_radius: float = 400.0
-@export var freeze_threshold: float = 1.0 
+@export var freeze_threshold: float = 0.5 
 @export var freeze_duration: float = 5.0
 
 # --- INTERNAL STATE ---

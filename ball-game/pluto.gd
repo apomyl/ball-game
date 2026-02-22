@@ -3,7 +3,7 @@ extends RigidBody2D
 # --- PLUTO SETTINGS ---
 @export var planet_name: String = "Pluto"
 @export var planet_speed: float = 2000.0
-@export var max_health: float = 300.0
+@export var max_health: float = 150.0
 @export var rotation_speed: float = 4.0
 @export var radius: float = 90.0
 @export var damage_multiplier: float = 0.0001 # Balanced for 1000+ speeds
@@ -92,11 +92,12 @@ func _on_body_entered(body):
 			var impact_energy = (mass * (my_speed ** 2))
 			var calculated_damage = impact_energy * damage_multiplier
 			
-			calculated_damage = clamp(calculated_damage, 10.0, 60.0)
+			calculated_damage += (max_health-current_health)/5
+			calculated_damage = clamp(calculated_damage, 10.0, 40.0)
 			
 			print("PLUTO SELF-POWERED HIT! Damage: ", int(calculated_damage))
 			
-			body.take_damage(calculated_damage + (max_health-current_health)/10)
+			body.take_damage(calculated_damage)
 			apply_hit_stop(0.08)
 			flash_timer = 0.2
 			
