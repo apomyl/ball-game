@@ -27,7 +27,7 @@ alignment = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="SliderContainer" unique_id=1893297790]
 layout_mode = 2
 theme = ExtResource("1_lotrb")
-text = "asdf"
+text = "Speed"
 fit_content = true
 
 [node name="HSlider" type="HSlider" parent="SliderContainer" unique_id=999440617]
@@ -37,7 +37,7 @@ theme = ExtResource("1_lotrb")
 [node name="RichTextLabel2" type="RichTextLabel" parent="SliderContainer" unique_id=431006261]
 layout_mode = 2
 theme = ExtResource("1_lotrb")
-text = "asdf"
+text = "Mass"
 fit_content = true
 
 [node name="HSlider2" type="HSlider" parent="SliderContainer" unique_id=582932542]
@@ -47,7 +47,7 @@ theme = ExtResource("1_lotrb")
 [node name="RichTextLabel3" type="RichTextLabel" parent="SliderContainer" unique_id=1936301628]
 layout_mode = 2
 theme = ExtResource("1_lotrb")
-text = "asdf"
+text = "Size"
 fit_content = true
 
 [node name="HSlider3" type="HSlider" parent="SliderContainer" unique_id=1410190916]
@@ -106,10 +106,10 @@ texture_normal = ExtResource("5_fkntm")
 
 [node name="Name" type="RichTextLabel" parent="Planet Selector" unique_id=1329680754]
 layout_mode = 0
-offset_left = 111.0
-offset_top = 904.0
-offset_right = 668.0
-offset_bottom = 1090.0
+offset_left = -28.0
+offset_top = 896.0
+offset_right = 816.0
+offset_bottom = 1082.0
 size_flags_vertical = 3
 theme = ExtResource("1_lotrb")
 bbcode_enabled = true
