@@ -1,27 +1,50 @@
-[gd_scene format=3 uid="uid://b301r0jgi3n0f"]
+[gd_scene load_steps=11 format=3 uid="uid://b301r0jgi3n0f"]
 
-[ext_resource type="Texture2D" uid="uid://drp8fp3i4w1b7" path="res://assets/backgrounds/background.png" id="1_r18cp"]
+[ext_resource type="Texture2D" uid="uid://dl8ji4d5vktpk" path="res://assets/backgrounds/bg110.png" id="1_oc3xf"]
 [ext_resource type="Script" uid="uid://chx1bhib1wwbr" path="res://ui/powerups/power_1.gd" id="2_gak0k"]
+[ext_resource type="Texture2D" uid="uid://dcq3akr8svpbx" path="res://assets/backgrounds/bg111.png" id="2_qdk8a"]
+[ext_resource type="Texture2D" uid="uid://dryuf5wt0m43m" path="res://assets/backgrounds/bg15.png" id="3_aisrm"]
 [ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="3_b61td"]
+[ext_resource type="Texture2D" uid="uid://bv5f7kdgxuono" path="res://assets/backgrounds/bg16.png" id="4_d4j6q"]
+[ext_resource type="Texture2D" uid="uid://buquhik7uv8me" path="res://assets/backgrounds/bg17.png" id="5_ab3ps"]
+[ext_resource type="Texture2D" uid="uid://b0ogllqu5mbvt" path="res://assets/backgrounds/bg18.png" id="6_22xs3"]
+[ext_resource type="Texture2D" uid="uid://dmpqemx51v3c2" path="res://assets/backgrounds/bg19.png" id="7_8nsf1"]
 
-[node name="Power1" type="TextureRect" unique_id=946894024]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_qlwwu"]
+frames = 7
+speed_scale = 2.0
+frame_0/texture = ExtResource("1_oc3xf")
+frame_1/texture = ExtResource("2_qdk8a")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_aisrm")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_d4j6q")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_ab3ps")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_22xs3")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_8nsf1")
+frame_6/duration = 1.0
+
+[node name="Power1" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_r18cp")
+texture = SubResource("AnimatedTexture_qlwwu")
 stretch_mode = 6
 script = ExtResource("2_gak0k")
 
-[node name="Button" type="Button" parent="." unique_id=595689357]
+[node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 167.0
 offset_top = 212.0
 offset_right = 603.0
 offset_bottom = 876.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Button" unique_id=983172829]
+[node name="RichTextLabel" type="RichTextLabel" parent="Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,14 +58,14 @@ text = "Power 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="." unique_id=677607205]
+[node name="Button2" type="Button" parent="."]
 layout_mode = 0
 offset_left = 757.0
 offset_top = 208.0
 offset_right = 1193.0
 offset_bottom = 872.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Button2" unique_id=2066216022]
+[node name="RichTextLabel" type="RichTextLabel" parent="Button2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,14 +79,14 @@ text = "power 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button3" type="Button" parent="." unique_id=2116929360]
+[node name="Button3" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1330.0
 offset_top = 212.0
 offset_right = 1766.0
 offset_bottom = 876.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Button3" unique_id=1298583740]
+[node name="RichTextLabel" type="RichTextLabel" parent="Button3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
