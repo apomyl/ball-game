@@ -57,13 +57,20 @@ func _draw():
 	# Damage zone arc
 	draw_arc(Vector2.ZERO, arc_radius, deg_to_rad(-90), deg_to_rad(90), 32, arc_color, 8.0)
 	
-	# Health Bar positioned above the arc
-	var hp_pct = clamp(current_health / max_health, 0.0, 1.0)
-	var bar_width = 120
-	var bar_pos = Vector2(-bar_width / 2, -arc_radius - 40) 
-	
-	draw_rect(Rect2(bar_pos, Vector2(bar_width, 12)), Color.BLACK)
-	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, 12)), Color.ORANGE_RED.lerp(Color.RED, 1.0 - hp_pct))
+	# Health Bar
+	# Using float() ensures the division results in a decimal (0.0 to 1.0)
+	var hp_pct = clamp(float(current_health) / float(max_health), 0.0, 1.0)
+	var bar_width = 100
+	var bar_height = 10 # Use this variable in the rects below
+	var bar_pos = Vector2(-bar_width / 2, -radius - 50) 
+
+	# Draw Background (Black)
+	draw_rect(Rect2(bar_pos, Vector2(bar_width, bar_height)), Color.BLACK)
+
+	# Draw Health (Green to Red Lerp)
+	# 1.0 - hp_pct means: at 100% health, weight is 0 (Green). At 0% health, weight is 1 (Red).
+	var health_color = Color.GREEN.lerp(Color.RED, 1.0 - hp_pct)
+	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, bar_height)), health_color)
 
 func _integrate_forces(state):
 	if state.linear_velocity.length() > 0:

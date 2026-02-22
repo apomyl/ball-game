@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b8jxcvqp3sp8v"]
+
+[ext_resource type="Script" uid="uid://bhqjrlfobjjv6" path="res://uranus.gd" id="1_fnguc"]
+[ext_resource type="Texture2D" uid="uid://mhhif5kh1uau" path="res://assets/uranus.png" id="2_fnguc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_em3ml"]
+radius = 351.14496
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_em3ml"]
+size = Vector2(347.49994, 698.3333)
+
+[node name="Uranus" type="RigidBody2D" unique_id=612661867]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_cbx31")
+gravity_scale = 0.0
+continuous_cd = 2
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_fnguc")
+
+[node name="circleshape2d" type="CollisionShape2D" parent="." unique_id=40652161]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("CircleShape2D_em3ml")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("2_fnguc")
+
+[node name="weaponhitbox" type="Area2D" parent="." unique_id=596913455]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weaponhitbox" unique_id=881282358]
+position = Vector2(104.75001, -2.4999962)
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_em3ml")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="weaponhitbox" to="." method="_on_weaponhitbox_body_entered"]

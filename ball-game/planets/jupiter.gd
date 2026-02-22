@@ -3,7 +3,7 @@ extends RigidBody2D
 # --- JUPITER SETTINGS ---
 @export var planet_name: String = "Jupiter"
 @export var planet_speed: float = 500.0
-@export var max_health: float = 500.0
+@export var max_health: float = 400.0
 @export var radius: float = 410.0
 @export var damage_multiplier: float = 0.0001 # Needed for kinetic calculation
 
@@ -11,7 +11,7 @@ extends RigidBody2D
 @export var base_spin: float = 2.0
 @export var max_spin: float = 40.0 
 @export var spin_acceleration: float = 3.0 
-@export var spin_damage_multiplier: float = 2.0 
+@export var spin_damage_multiplier: float = 1.5 
 
 # --- INTERNAL STATE (Previously inherited, now required) ---
 var current_health: float
