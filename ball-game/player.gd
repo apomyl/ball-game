@@ -20,6 +20,10 @@ func _ready():
 	$Image.texture = load(PlayerDetails.sprite_file_paths[PlayerDetails.PlanetName])
 	$Image.scale = Vector2(PlayerDetails.sprite_scale[PlayerDetails.PlanetName], PlayerDetails.sprite_scale[PlayerDetails.PlanetName])
 	
+	max_health = 100 + (900*PlayerDetails.BaseHealth/1498)
+	planet_speed = 500 + (2500*PlayerDetails.Speed/1498)
+	mass = 0.5 + (4*PlayerDetails.Mass/1498)
+	
 	add_powerups()
 
 	current_health = max_health
@@ -108,4 +112,45 @@ func _on_body_entered(body):
 			body.take_damage(2.0)
 	
 func add_powerups():
-	pass
+	for each in PlayerDetails.Powerups:
+		match each:
+			0:
+				planet_speed += 50
+			1:
+				mass += (50/500)
+			2:
+				max_health += 50
+			3:
+				planet_speed += 40
+			4:
+				mass += (40/500)
+			5:
+				max_health += 40
+			6:
+				planet_speed += 67
+			7:
+				mass += (67/500)
+			8:
+				max_health += 67
+			9:
+				planet_speed += 100
+			10:
+				mass += (100/500)
+			11:
+				max_health+= 100
+			12:
+				planet_speed += 150
+			13:
+				mass += (150/500)
+			14:
+				max_health += 150
+			15:
+				planet_speed += 200
+			16:
+				mass += (200/500)
+			17:
+				max_health += 200
+			18:
+				pass
+			19:
+				pass

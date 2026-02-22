@@ -10,9 +10,9 @@ func _ready() -> void:
 	power1 = PlayerDetails.UnusedPowerups.pop_front()
 	power2 = PlayerDetails.UnusedPowerups.pop_front()
 	power3 = PlayerDetails.UnusedPowerups.pop_front()
-	$Button/RichTextLabel.text = PlayerDetails.PowerupDesc.get(power1)
-	$Button2/RichTextLabel.text = PlayerDetails.PowerupDesc.get(power2)	
-	$Button3/RichTextLabel.text = PlayerDetails.PowerupDesc.get(power3)
+	$Button/RichTextLabel.texture = load(PlayerDetails.PowerupDesc.get(power1))
+	$Button2/RichTextLabel.texture = load(PlayerDetails.PowerupDesc.get(power2))
+	$Button3/RichTextLabel.texture = load(PlayerDetails.PowerupDesc.get(power3))
 	
 func _on_button_pressed() -> void:
 	PlayerDetails.Powerups.append(power1)
