@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bqk2hpce0f7oj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cdlhw"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_cdlhw"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tbbdy"]
+gradient = SubResource("Gradient_cdlhw")
+fill = 1
+
+[sub_resource type="Gradient" id="Gradient_pt2p5"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.87058824, 0.12941177, 1, 1, 0.29411766, 0.2, 1, 0.18431373, 0.18431373, 0.18431373, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_73imx"]
+gradient = SubResource("Gradient_pt2p5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ejbc6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 45.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_73imx")
+
+[node name="FireEffect" type="GPUParticles2D" unique_id=1035404300]
+z_index = 5
+material = SubResource("CanvasItemMaterial_cdlhw")
+amount = 30
+texture = SubResource("GradientTexture2D_tbbdy")
+lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_ejbc6")

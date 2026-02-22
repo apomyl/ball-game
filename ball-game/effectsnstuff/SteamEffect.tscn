@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c2t6r2uk2sm8v"]
+
+[ext_resource type="Script" uid="uid://d1rwejup1trj7" path="res://effectsnstuff/steam_effect.gd" id="1_dnafn"]
+
+[sub_resource type="Gradient" id="Gradient_kncdl"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gboo4"]
+gradient = SubResource("Gradient_kncdl")
+fill = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_necg2"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 40.0
+direction = Vector3(1, 1, 1)
+gravity = Vector3(0, 98, 0)
+
+[node name="SteamEffect" type="GPUParticles2D" unique_id=1619493737]
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture2D_gboo4")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_necg2")
+script = ExtResource("1_dnafn")
