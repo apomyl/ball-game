@@ -1,0 +1,226 @@
+[gd_scene load_steps=26 format=3 uid="uid://bp4fltlnettkh"]
+
+[ext_resource type="Script" uid="uid://ylc3vcwm2hte" path="res://ui/instructions.gd" id="1_gwj8b"]
+[ext_resource type="Texture2D" uid="uid://drp8fp3i4w1b7" path="res://assets/backgrounds/background.png" id="1_q4e6u"]
+[ext_resource type="Texture2D" uid="uid://8mlvd7pkcv50" path="res://assets/animations/rocketbg.png" id="3_22tfe"]
+[ext_resource type="Texture2D" uid="uid://dwkr6nnw0xevh" path="res://assets/animations/astro.png" id="4_jrofa"]
+[ext_resource type="FontFile" uid="uid://b4n5v84ypqf5g" path="res://assets/Cosmo Corner PERSONAL USE ONLY!.ttf" id="5_jrofa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soo13"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(0, 0, 123, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8ps7"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(174, 0, 87, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j10tq"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(270, 0, 90, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nftlv"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(0, 136, 129, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_327in"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(129, 136, 129, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bwsa"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(0, 160, 129, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qy8b"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(268, 143, 134, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rteug"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(459, 0, 153, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c55kt"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(459, 0, 153, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdm2p"]
+atlas = ExtResource("3_22tfe")
+region = Rect2(438, 0, 146, 383)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxi0q"]
+atlas = ExtResource("4_jrofa")
+region = Rect2(0, 0, 182, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5pu1"]
+atlas = ExtResource("4_jrofa")
+region = Rect2(182, 0, 182, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjp1f"]
+atlas = ExtResource("4_jrofa")
+region = Rect2(360, 0, 180, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtfbm"]
+atlas = ExtResource("4_jrofa")
+region = Rect2(540, 0, 180, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0x0m"]
+atlas = ExtResource("4_jrofa")
+region = Rect2(720, 0, 144, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w21n5"]
+atlas = ExtResource("4_jrofa")
+region = Rect2(864, 0, 144, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i87k"]
+atlas = ExtResource("4_jrofa")
+region = Rect2(1014, 0, 169, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftxkj"]
+atlas = ExtResource("4_jrofa")
+region = Rect2(1192, 0, 149, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cwka"]
+atlas = ExtResource("4_jrofa")
+region = Rect2(1344, 0, 192, 259)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_byy8q"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soo13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8ps7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j10tq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nftlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_327in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bwsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qy8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rteug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c55kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdm2p")
+}],
+"loop": false,
+"name": &"end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_gxi0q")
+}, {
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_d5pu1")
+}, {
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_qjp1f")
+}, {
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_qtfbm")
+}, {
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_h0x0m")
+}, {
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_w21n5")
+}, {
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_4i87k")
+}, {
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_ftxkj")
+}, {
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_2cwka")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="Instructions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gwj8b")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_q4e6u")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Astronaut" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -808.0
+offset_top = -472.0
+offset_right = -768.0
+offset_bottom = -432.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AstronautSprite" type="AnimatedSprite2D" parent="Astronaut"]
+position = Vector2(481, 159.00003)
+scale = Vector2(1.3617891, 1.4465648)
+sprite_frames = SubResource("SpriteFrames_byy8q")
+animation = &"end"
+
+[node name="Speech" type="Control" parent="Astronaut"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bubble" type="NinePatchRect" parent="Astronaut/Speech"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+region_rect = Rect2(100, 100, 100, 100)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Text" type="RichTextLabel" parent="Astronaut/Speech"]
+layout_mode = 0
+offset_left = -475.0
+offset_top = -234.0
+offset_right = 195.0
+offset_bottom = 80.0
+theme_override_colors/font_selected_color = Color(0.32637355, 0.69801295, 0.20284346, 1)
+theme_override_fonts/normal_font = ExtResource("5_jrofa")
+theme_override_font_sizes/normal_font_size = 27
+text = "kgfytdyd"
+
+[node name="SequenceTimer" type="Timer" parent="."]
