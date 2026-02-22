@@ -97,7 +97,7 @@ func take_damage(amount: float):
 	current_health -= amount
 	flash_timer = 0.1
 	if current_health <= 0:
-		queue_free()
+		get_tree().change_scene_to_file("res://ui/powerups/power1.tscn")
 		
 # --- UPDATED DYNAMIC DAMAGE LOGIC ---
 func _on_body_entered(body):

@@ -175,4 +175,4 @@ func take_damage(amount):
 			if is_instance_valid(b): 
 				b.planet_speed = affected_planets[b]["orig_speed"]
 				b.modulate = Color.WHITE
-		queue_free()
+		get_tree().change_scene_to_file("res://ui/powerups/power1.tscn")

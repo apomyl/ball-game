@@ -11,8 +11,8 @@ extends RigidBody2D
 # --- INTERNAL STATE ---
 var current_health: float
 var flash_timer: float = 0.0
-var is_death = false
-var death_star_timer = 2.5
+#var is_death = false
+#var death_star_timer = 2.5
 
 @onready var hitbox = $weaponhitbox
 
@@ -50,14 +50,14 @@ func _physics_process(_delta):
 func _process(delta):
 	if flash_timer > 0:
 		flash_timer -= delta
-	if is_death:
-		if death_star_timer>0:
-			death_star_timer -= delta
-		if death_star_timer <0:
-			$laser.visible = false
-		elif death_star_timer < -2.5:
-			$laser.visible = true
-			death_star_timer = 2.5
+	#if is_death:
+		#if death_star_timer>0:
+			#death_star_timer -= delta
+		#if death_star_timer <0:
+			#$laser.visible = false
+		#elif death_star_timer < -2.5:
+			#$laser.visible = true
+			#death_star_timer = 2.5
 
 
 func _integrate_forces(state):
@@ -165,12 +165,12 @@ func add_powerups():
 				max_health += 200
 			18:
 				rotation_speed = 10
-			19:
-				is_death = true
+			#19:
+				#is_death = true
 
-func _on_laser_body_entered(body: Node2D) -> void:
-	if body.has_method("take_damage") and body != self:
-		# Check if the hit landed in our designated 'Weapon' zone
-		if $laser.overlaps_body(body):
-			body.take_damage(200)
-			await get_tree().create_timer(0.2, true, false, true).timeout
+#func _on_laser_body_entered(body: Node2D) -> void:
+	#if body.has_method("take_damage") and body != self:
+		## Check if the hit landed in our designated 'Weapon' zone
+		#if $laser.overlaps_body(body):
+			#body.take_damage(200)
+			#await get_tree().create_timer(0.2, true, false, true).timeout

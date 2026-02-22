@@ -153,7 +153,7 @@ func take_damage(amount: float):
 	if current_health <= 0:
 		for body in affected_planets:
 			if is_instance_valid(body): body.planet_speed = affected_planets[body]
-		queue_free()
+		get_tree().change_scene_to_file("res://ui/powerups/power1.tscn")
 
 func apply_hit_stop(duration: float):
 	Engine.time_scale = 0.05

@@ -183,4 +183,4 @@ func take_damage(amount):
 		for b in affected_planets.keys():
 			if is_instance_valid(b): 
 				b.modulate = affected_planets[b]["orig_color"]
-		queue_free()
+		get_tree().change_scene_to_file("res://ui/powerups/power1.tscn")

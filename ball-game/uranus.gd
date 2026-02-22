@@ -88,7 +88,8 @@ func take_damage(amount: float):
 	current_health -= amount
 	flash_timer = 0.1
 	if current_health <= 0:
-		queue_free()
+		get_tree().change_scene_to_file("res://ui/powerups/power1.tscn")
+
 
 func apply_hit_stop(duration: float):
 	Engine.time_scale = 0.05

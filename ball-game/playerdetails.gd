@@ -32,7 +32,9 @@ var EnemyPaths = {
 
 var current_enemy_index: int = 0
 
-var UnusedPowerups = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+var UnusedPowerups = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,
+#18,
+19]
 
 var PowerupDesc = {
 	0: "res://assets/powerups/01.png",
@@ -53,7 +55,7 @@ var PowerupDesc = {
 	15: "res://assets/powerups/16.png",
 	16: "res://assets/powerups/17.png",
 	17: "res://assets/powerups/18.png",
-	18: "res://assets/powerups/19.png",
+	#18: "res://assets/powerups/19.png",
 	19: "res://assets/powerups/20.png"
 }
 
