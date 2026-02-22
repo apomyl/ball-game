@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bp6vqjk6b7nwq"]
+[gd_resource type="Theme" format=3 uid="uid://bp6vqjk6b7nwq"]
 
 [ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="1_wl1kw"]
 [ext_resource type="Texture2D" uid="uid://0alqrsr2ryxm" path="res://assets/Black_hole.png" id="2_wl1kw"]

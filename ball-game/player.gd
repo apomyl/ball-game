@@ -26,6 +26,10 @@ func _ready():
 	$Image.texture = load(PlayerDetails.sprite_file_paths[PlayerDetails.PlanetName])
 	$Image.scale = Vector2(PlayerDetails.sprite_scale[PlayerDetails.PlanetName], PlayerDetails.sprite_scale[PlayerDetails.PlanetName])
 	
+	max_health = 100 + (900*PlayerDetails.BaseHealth/1498)
+	planet_speed = 500 + (2500*PlayerDetails.Speed/1498)
+	mass = 0.5 + (4*PlayerDetails.Mass/1498)
+	
 	add_powerups()
 
 	current_health = max_health
