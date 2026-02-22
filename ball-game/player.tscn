@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://s3ly1a2ffail"]
+[gd_scene format=3 uid="uid://c1axn8vp1hgad"]
 
 [ext_resource type="PackedScene" uid="uid://dgw4tkllph668" path="res://planets/ball.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://chg7plb5adtaj" path="res://player.gd" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://b5cje3fg0d5me" path="res://assets/exoplanet2.png" id="3_hqtel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(4400, 100)
 
 [node name="Player" unique_id=612661867 instance=ExtResource("1_4flbx")]
 script = ExtResource("2_i3pqv")
@@ -16,3 +19,16 @@ damage_multiplier = 0.001
 [node name="Image" parent="." index="1" unique_id=1652644095]
 scale = Vector2(0.93, 0.93)
 texture = ExtResource("3_hqtel")
+
+[node name="laser" type="Area2D" parent="." index="3" unique_id=160404226]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="laser" index="0" unique_id=461171117]
+position = Vector2(2200, 1)
+shape = SubResource("RectangleShape2D_i3pqv")
+
+[node name="Polygon2D" type="Polygon2D" parent="laser" index="1" unique_id=509487408]
+color = Color(1.5594364e-05, 0.9913177, 0, 1)
+polygon = PackedVector2Array(4400, 50, 4400, -50, 0, -50, 0, 50)
+
+[connection signal="body_entered" from="laser" to="." method="_on_laser_body_entered"]

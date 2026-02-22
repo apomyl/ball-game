@@ -8,15 +8,11 @@ extends RigidBody2D
 @export var radius: float = 200.0
 @export var damage_multiplier: float = 0.001
 
-# --- POWERUPS (DEATH STAR) ---
-var has_death_star: bool = false
-var death_star_cooldown: float = 5.0
-var death_star_timer: float = 0.0
-var laser_scene = preload("res://powerups/DeathLaser.tscn") # Make sure this file exists!
-
 # --- INTERNAL STATE ---
 var current_health: float
 var flash_timer: float = 0.0
+var is_death = false
+var death_star_timer = 2.5
 
 @onready var hitbox = $weaponhitbox
 
@@ -54,13 +50,15 @@ func _physics_process(_delta):
 func _process(delta):
 	if flash_timer > 0:
 		flash_timer -= delta
+	if is_death:
+		if death_star_timer>0:
+			death_star_timer -= delta
+		if death_star_timer <0:
+			$laser.visible = false
+		elif death_star_timer < -2.5:
+			$laser.visible = true
+			death_star_timer = 2.5
 
-	# --- DEATH STAR LOGIC ---
-	if has_death_star:
-		death_star_timer -= delta
-		if death_star_timer <= 0:
-			fire_death_star_laser()
-			death_star_timer = death_star_cooldown
 
 func _integrate_forces(state):
 	# Forces the planet to always move at its set speed
@@ -123,50 +121,56 @@ func _on_body_entered(body):
 		else:
 			# Minor damage for hitting the 'back' or 'sides' of the planet
 			body.take_damage(2.0)
+			
+			
 	
 func add_powerups():
-	# Example: If you want to test the Death Star immediately, uncomment the line below
-	# has_death_star = true
-	pass
+	for each in PlayerDetails.Powerups:
+		match each:
+			0:
+				planet_speed += 50
+			1:
+				mass += (50/500)
+			2:
+				max_health += 50
+			3:
+				planet_speed += 40
+			4:
+				mass += (40/500)
+			5:
+				max_health += 40
+			6:
+				planet_speed += 67
+			7:
+				mass += (67/500)
+			8:
+				max_health += 67
+			9:
+				planet_speed += 100
+			10:
+				mass += (100/500)
+			11:
+				max_health+= 100
+			12:
+				planet_speed += 150
+			13:
+				mass += (150/500)
+			14:
+				max_health += 150
+			15:
+				planet_speed += 200
+			16:
+				mass += (200/500)
+			17:
+				max_health += 200
+			18:
+				rotation_speed = 10
+			19:
+				is_death = true
 
-# ==========================================
-# DEATH STAR POWERUP LOGIC
-# ==========================================
-
-func fire_death_star_laser():
-	var target = get_nearest_enemy()
-	
-	if target != null:
-		# 1. Create the laser
-		var laser = laser_scene.instantiate()
-		
-		# 2. Set the laser's starting position to our planet
-		laser.global_position = global_position
-		
-		# 3. Tell the laser we are the shooter (so it doesn't hurt us)
-		laser.shooter = self 
-		
-		# 4. Point the laser directly at the target
-		var direction = (target.global_position - global_position).normalized()
-		laser.rotation = direction.angle()
-		
-		# 5. Add it to the main game scene safely using call_deferred
-		get_tree().current_scene.add_child.call_deferred(laser)
-		
-		print("FIRING DEATH STAR LASER AT ", target.name, "!")
-
-func get_nearest_enemy() -> Node2D:
-	# Looks for all nodes that have been added to the "enemies" group
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	var nearest_enemy = null
-	var shortest_distance = INF # Start with an infinitely large distance
-	
-	for enemy in enemies:
-		if is_instance_valid(enemy): 
-			var distance = global_position.distance_to(enemy.global_position)
-			
-			if distance < shortest_distance:
-				shortest_distance = distance
-				nearest_enemy = enemy
-				
-	return nearest_enemy
+func _on_laser_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage") and body != self:
+		# Check if the hit landed in our designated 'Weapon' zone
+		if $laser.overlaps_body(body):
+			body.take_damage(200)
+			await get_tree().create_timer(0.2, true, false, true).timeout
