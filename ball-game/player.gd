@@ -6,7 +6,7 @@ extends RigidBody2D
 @export var max_health: float = 100.0
 @export var rotation_speed: float = 2.5
 @export var radius: float = 200.0
-@export var damage_multiplier: float = 0.001
+@export var damage_multiplier: float = 0.003
 
 # --- INTERNAL STATE ---
 var current_health: float
@@ -82,13 +82,18 @@ func _draw():
 	# Health Fill (Lerps Green to Red)
 	var health_color = Color.GREEN.lerp(Color.RED, 1.0 - hp_pct)
 	draw_rect(Rect2(bar_pos, Vector2(bar_width * hp_pct, bar_height)), health_color)
+	
+func _die() -> void:
+	if not is_inside_tree():
+		return
+	get_tree().change_scene_to_file("res://ui/death_scene.tscn")
+	queue_free()
 
-func take_damage(amount: float):
+func take_damage(amount: float) -> void:
 	current_health -= amount
 	flash_timer = 0.1
-	if current_health <= 0:
-		get_tree().change_scene_to_file("res://ui/death_scene.tscn")
-		queue_free()
+	if current_health <= 0.0:
+		call_deferred("_die")
 
 func apply_hit_stop(duration: float):
 	Engine.time_scale = 0.05
@@ -112,7 +117,7 @@ func _on_body_entered(body):
 			calculated_damage = clamp(calculated_damage, 5.0, 50.0)
 			
 			body.take_damage(calculated_damage)
-			apply_hit_stop(0.06)
+			# await apply_hit_stop(0.06)
 			flash_timer = 0.2
 			
 			if body is RigidBody2D:

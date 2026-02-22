@@ -2,11 +2,11 @@ extends RigidBody2D
 
 # --- PLUTO SETTINGS ---
 @export var planet_name: String = "Pluto"
-@export var planet_speed: float = 1800.0 # Pluto is fast!
-@export var max_health: float = 300.0    # But fragile.
-@export var rotation_speed: float = 4.0  # Spins faster
+@export var planet_speed: float = 2000.0
+@export var max_health: float = 300.0
+@export var rotation_speed: float = 4.0
 @export var radius: float = 90.0
-@export var damage_multiplier: float = 0.0002 # Balanced for 1000+ speeds
+@export var damage_multiplier: float = 0.0001 # Balanced for 1000+ speeds
 
 # --- INTERNAL STATE ---
 var current_health: float

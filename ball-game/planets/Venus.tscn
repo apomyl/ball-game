@@ -1,7 +1,7 @@
-[gd_scene load_steps=0 format=3 uid="uid://c3ikhddpsu0su"]
+[gd_scene format=3 uid="uid://c3ikhddpsu0su"]
 
-[ext_resource type="Script" uid="uid://cwnm70cen18v7" path="res://planets/venus.gd" id="1_gqdcm"]
-[ext_resource type="Texture2D" uid="uid://4b2fahdyv0r" path="res://assets/pluto.png" id="2_uxbrh"]
+[ext_resource type="Script" path="res://planets/venus.gd" id="1_ddi53"]
+[ext_resource type="Texture2D" uid="uid://bbl2fr053fo6i" path="res://assets/image-removebg-preview.png" id="2_54mlm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
 friction = 0.0
@@ -23,7 +23,7 @@ gravity_scale = 0.0
 continuous_cd = 2
 linear_damp_mode = 1
 angular_damp_mode = 1
-script = ExtResource("1_gqdcm")
+script = ExtResource("1_ddi53")
 
 [node name="circleshape2d" type="CollisionShape2D" parent="." unique_id=40652161]
 scale = Vector2(0.6, 0.6)
@@ -31,7 +31,7 @@ shape = SubResource("CircleShape2D_em3ml")
 
 [node name="Image" type="Sprite2D" parent="." unique_id=1652644095]
 scale = Vector2(0.55, 0.55)
-texture = ExtResource("2_uxbrh")
+texture = ExtResource("2_54mlm")
 
 [node name="weaponhitbox" type="Area2D" parent="." unique_id=596913455]
 collision_layer = 0

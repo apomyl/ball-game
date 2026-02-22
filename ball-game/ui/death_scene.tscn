@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0l7nw3j38f4q"]
+[gd_scene format=3 uid="uid://d0l7nw3j38f4q"]
 
 [ext_resource type="Texture2D" uid="uid://bgxa7tt1jvbka" path="res://assets/backgrounds/death.png" id="1_4wqrt"]
 [ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="2_wrxdq"]

@@ -30,6 +30,19 @@ var EnemyPaths = {
 	9: "res://planets/sun.tscn"
 }
 
+var EnemyProfiles = {
+	0: "res://ui/profiles/pluto_profile.tscn",
+	1: "res://ui/profiles/neptune_profile.tscn",
+	2: "res://ui/profiles/uranus_profile.tscn",
+	3: "res://ui/profiles/saturn_profile.tscn",
+	4: "res://ui/profiles/jupiter_profile.tscn",
+	5: "res://ui/profiles/mars_profile.tscn",
+	6: "res://ui/profiles/earth_profile.tscn",
+	7: "res://ui/profiles/venus_profile.tscn",
+	8: "res://ui/profiles/mercury_profile.tscn",
+	9: "res://ui/profiles/sun_profile.tscn"
+}
+
 var current_enemy_index: int = 0
 
 var UnusedPowerups = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,
@@ -65,14 +78,18 @@ var PowerupDesc = {
 @export var BaseHealth: float
 
 @export var e_path: String
+@export var p_path = EnemyProfiles.get(0)
 
 func advance_enemy():
 	# Update e_path using the current index
 	e_path = EnemyPaths[current_enemy_index]
+
 	
 	# Increment the index for the next time this is called
 	current_enemy_index += 1
-	
+	p_path = EnemyProfiles[current_enemy_index]
+
+		
 	# Optional: Reset to 0 if we run out of enemies (looping)
 	if current_enemy_index >= EnemyPaths.size():
 		current_enemy_index = 0
