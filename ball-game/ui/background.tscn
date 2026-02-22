@@ -1,0 +1,70 @@
+[gd_scene load_steps=14 format=3 uid="uid://bw7la53eq06bn"]
+
+[ext_resource type="Texture2D" uid="uid://clfjac5jn76kx" path="res://assets/backgrounds/bg31.png" id="1_yg7ml"]
+[ext_resource type="Texture2D" uid="uid://bj3josw42jefq" path="res://assets/backgrounds/bg32.png" id="2_stpsu"]
+[ext_resource type="Texture2D" uid="uid://cm8ffjanuasge" path="res://assets/backgrounds/bg311.png" id="3_yalll"]
+[ext_resource type="Texture2D" uid="uid://ko53oyuqjlsk" path="res://assets/backgrounds/bg33.png" id="4_sfpog"]
+[ext_resource type="Texture2D" uid="uid://cvr05uaxd82a6" path="res://assets/backgrounds/bg34.png" id="5_1c2to"]
+[ext_resource type="Texture2D" uid="uid://btjud7m7wig7h" path="res://assets/backgrounds/bg35.png" id="6_637hh"]
+[ext_resource type="Texture2D" uid="uid://dp3y5bylw46g8" path="res://assets/backgrounds/bg36.png" id="7_x23t8"]
+[ext_resource type="Texture2D" uid="uid://bvcdydui4vufp" path="res://assets/backgrounds/bg37.png" id="8_cdfki"]
+[ext_resource type="Texture2D" uid="uid://c01loj75ix0hg" path="res://assets/backgrounds/bg38.png" id="9_owprb"]
+[ext_resource type="Texture2D" uid="uid://culndk4tf5udg" path="res://assets/backgrounds/bg39.png" id="10_18fss"]
+[ext_resource type="Texture2D" uid="uid://1ejvrsiagstc" path="res://assets/backgrounds/bg310.png" id="11_y5ydl"]
+[ext_resource type="Script" uid="uid://cab7o5gtj4pnl" path="res://ui/background.gd" id="12_stpsu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yg7ml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yg7ml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_stpsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sfpog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1c2to")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_637hh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x23t8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cdfki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_owprb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_18fss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_y5ydl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yalll")
+}],
+"loop": true,
+"name": &"bg",
+"speed": 2.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_yg7ml")
+animation = &"bg"
+centered = false
+script = ExtResource("12_stpsu")

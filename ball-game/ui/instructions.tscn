@@ -1,10 +1,64 @@
-[gd_scene format=3 uid="uid://bp4fltlnettkh"]
+[gd_scene load_steps=40 format=3 uid="uid://bp4fltlnettkh"]
 
 [ext_resource type="Script" uid="uid://ylc3vcwm2hte" path="res://ui/instructions.gd" id="1_gwj8b"]
-[ext_resource type="Texture2D" uid="uid://drp8fp3i4w1b7" path="res://assets/backgrounds/background.png" id="1_q4e6u"]
+[ext_resource type="Texture2D" uid="uid://7p0tchg00sjj" path="res://assets/backgrounds/background11.png" id="2_gxi0q"]
 [ext_resource type="Texture2D" uid="uid://8mlvd7pkcv50" path="res://assets/animations/rocketbg.png" id="3_22tfe"]
+[ext_resource type="Texture2D" uid="uid://bb66jhl1306bl" path="res://assets/backgrounds/background12.png" id="3_d5pu1"]
 [ext_resource type="Texture2D" uid="uid://dwkr6nnw0xevh" path="res://assets/animations/astro.png" id="4_jrofa"]
+[ext_resource type="Texture2D" uid="uid://cs8hc3xd2sqde" path="res://assets/backgrounds/background13.png" id="4_qjp1f"]
 [ext_resource type="FontFile" uid="uid://b4n5v84ypqf5g" path="res://assets/Cosmo Corner PERSONAL USE ONLY!.ttf" id="5_jrofa"]
+[ext_resource type="Texture2D" uid="uid://d3f8t7wxmpmxg" path="res://assets/backgrounds/background14.png" id="5_qtfbm"]
+[ext_resource type="Texture2D" uid="uid://dryuf5wt0m43m" path="res://assets/backgrounds/bg15.png" id="6_h0x0m"]
+[ext_resource type="Texture2D" uid="uid://bv5f7kdgxuono" path="res://assets/backgrounds/bg16.png" id="7_w21n5"]
+[ext_resource type="Texture2D" uid="uid://buquhik7uv8me" path="res://assets/backgrounds/bg17.png" id="8_4i87k"]
+[ext_resource type="Texture2D" uid="uid://b0ogllqu5mbvt" path="res://assets/backgrounds/bg18.png" id="9_ftxkj"]
+[ext_resource type="Texture2D" uid="uid://dmpqemx51v3c2" path="res://assets/backgrounds/bg19.png" id="10_2cwka"]
+[ext_resource type="Texture2D" uid="uid://dl8ji4d5vktpk" path="res://assets/backgrounds/bg110.png" id="11_hfy4k"]
+[ext_resource type="Texture2D" uid="uid://dcq3akr8svpbx" path="res://assets/backgrounds/bg111.png" id="12_4mgd7"]
+[ext_resource type="Script" uid="uid://cab7o5gtj4pnl" path="res://ui/background.gd" id="13_gnyir"]
+[ext_resource type="Script" uid="uid://bc4fhth38m5by" path="res://ui/skip.gd" id="17_d5pu1"]
+[ext_resource type="FontFile" uid="uid://dx1133orocye5" path="res://assets/Star Rust.otf" id="17_qjp1f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72n4g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gxi0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d5pu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qjp1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qtfbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h0x0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w21n5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4i87k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ftxkj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2cwka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hfy4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4mgd7")
+}],
+"loop": true,
+"name": &"bg",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_soo13"]
 atlas = ExtResource("3_22tfe")
@@ -122,7 +176,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"end",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 0.61,
@@ -166,16 +220,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gwj8b")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_q4e6u")
-expand_mode = 1
-stretch_mode = 6
+[node name="Background" type="AnimatedSprite2D" parent="."]
+z_index = -1
+texture_filter = 4
+sprite_frames = SubResource("SpriteFrames_72n4g")
+animation = &"bg"
+centered = false
+script = ExtResource("13_gnyir")
 
 [node name="Astronaut" type="Control" parent="."]
 layout_mode = 1
@@ -224,3 +275,21 @@ theme_override_font_sizes/normal_font_size = 27
 text = "kgfytdyd"
 
 [node name="SequenceTimer" type="Timer" parent="."]
+
+[node name="skip" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.97800004
+anchor_right = 1.0
+anchor_bottom = 0.029000001
+offset_left = -305.76013
+offset_top = 76.0
+offset_right = -231.0
+offset_bottom = 85.68
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("17_qjp1f")
+theme_override_font_sizes/font_size = 28
+text = "SKIP"
+script = ExtResource("17_d5pu1")
+
+[connection signal="pressed" from="skip" to="skip" method="_on_pressed"]

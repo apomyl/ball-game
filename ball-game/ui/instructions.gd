@@ -8,7 +8,7 @@ extends Control
 # -------------------------
 # EDIT THESE
 # -------------------------
-var char_delay := 0.03
+var char_delay := 0.02
 var after_full_text_wait := 2.5
 var between_bubbles_wait := 0.4
 

@@ -1,10 +1,62 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbisgncstjtjh"]
+[gd_scene load_steps=18 format=3 uid="uid://cbisgncstjtjh"]
 
 [ext_resource type="Script" uid="uid://gulcyh205wdu" path="res://ui/main_menu.gd" id="1_rs7wx"]
-[ext_resource type="Texture2D" uid="uid://drp8fp3i4w1b7" path="res://assets/backgrounds/background.png" id="2_d6lax"]
 [ext_resource type="Texture2D" uid="uid://37iovauvy1v1" path="res://earth.png" id="2_ot7ep"]
+[ext_resource type="Texture2D" uid="uid://7p0tchg00sjj" path="res://assets/backgrounds/background11.png" id="2_tbovc"]
 [ext_resource type="Texture2D" uid="uid://dptnl8w8bnmeq" path="res://assets/title.png" id="3_ot7ep"]
+[ext_resource type="Texture2D" uid="uid://bf4dfroapygig" path="res://assets/backgrounds/background12.png" id="3_wruty"]
+[ext_resource type="Texture2D" uid="uid://c7e3d78ebv227" path="res://assets/backgrounds/background13.png" id="4_coicg"]
 [ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="4_u2ul1"]
+[ext_resource type="Texture2D" uid="uid://gj2f14ocw07s" path="res://assets/backgrounds/background14.png" id="5_ayhro"]
+[ext_resource type="Texture2D" uid="uid://bwvgbs5npdin3" path="res://assets/backgrounds/bg15.png" id="6_ap6ul"]
+[ext_resource type="Texture2D" uid="uid://ivtb1jo6cuux" path="res://assets/backgrounds/bg16.png" id="7_axkaq"]
+[ext_resource type="Texture2D" uid="uid://b7lmovjml6je3" path="res://assets/backgrounds/bg17.png" id="8_osiq4"]
+[ext_resource type="Texture2D" uid="uid://3o6p1qt6t1eq" path="res://assets/backgrounds/bg18.png" id="9_586es"]
+[ext_resource type="Texture2D" uid="uid://qc8lulh5hw3g" path="res://assets/backgrounds/bg19.png" id="10_mp2d1"]
+[ext_resource type="Texture2D" uid="uid://q0hj15cweyjv" path="res://assets/backgrounds/bg110.png" id="11_n2dns"]
+[ext_resource type="Texture2D" uid="uid://dybwjikyw1vyv" path="res://assets/backgrounds/bg111.png" id="12_isiei"]
+[ext_resource type="Script" uid="uid://cab7o5gtj4pnl" path="res://ui/background.gd" id="13_y4g4h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v1sgb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tbovc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wruty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_coicg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ayhro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ap6ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_axkaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_osiq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_586es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mp2d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_n2dns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_isiei")
+}],
+"loop": true,
+"name": &"bg",
+"speed": 2.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,15 +65,13 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_rs7wx")
 
-[node name="BG" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_d6lax")
-stretch_mode = 6
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+texture_filter = 4
+sprite_frames = SubResource("SpriteFrames_v1sgb")
+animation = &"bg"
+centered = false
+script = ExtResource("13_y4g4h")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0

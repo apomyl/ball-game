@@ -1,13 +1,65 @@
-[gd_scene format=3 uid="uid://c5clfb81rvk3v"]
+[gd_scene load_steps=19 format=3 uid="uid://c5clfb81rvk3v"]
 
 [ext_resource type="Theme" uid="uid://bp6vqjk6b7nwq" path="res://assets/theme.tres" id="1_lotrb"]
 [ext_resource type="Script" uid="uid://ds05vrvc0rtms" path="res://ui/creation.gd" id="1_vusna"]
-[ext_resource type="Texture2D" uid="uid://drp8fp3i4w1b7" path="res://assets/backgrounds/background.png" id="2_fkntm"]
+[ext_resource type="Texture2D" uid="uid://bmqst56nmvfeg" path="res://assets/backgrounds/bg11.png" id="2_mbx1c"]
+[ext_resource type="Texture2D" uid="uid://b6j03qn8ui561" path="res://assets/backgrounds/bg22.png" id="3_78o1v"]
 [ext_resource type="Script" uid="uid://cj4ih16vgpbmq" path="res://ui/planet_selector.gd" id="3_vusna"]
 [ext_resource type="Texture2D" uid="uid://di3ty4hop2e8t" path="res://assets/left.png" id="4_451v5"]
+[ext_resource type="Texture2D" uid="uid://dsmfgrtxtxtxo" path="res://assets/backgrounds/bg23.png" id="4_wqb2q"]
 [ext_resource type="Texture2D" uid="uid://cbfeibxxgvph4" path="res://assets/right.png" id="5_fkntm"]
+[ext_resource type="Texture2D" uid="uid://dpbmn5lv0a83o" path="res://assets/backgrounds/bg24.png" id="5_kr6je"]
+[ext_resource type="Texture2D" uid="uid://cqyygo1jcsffc" path="res://assets/backgrounds/bg25.png" id="6_cggdt"]
+[ext_resource type="Texture2D" uid="uid://caulkhnlwos42" path="res://assets/backgrounds/bg26.png" id="7_luehv"]
+[ext_resource type="Texture2D" uid="uid://dipcq6w0lplyy" path="res://assets/backgrounds/bg27.png" id="8_mkpqu"]
+[ext_resource type="Texture2D" uid="uid://5focorr7nhul" path="res://assets/backgrounds/bg28.png" id="9_tfkxd"]
+[ext_resource type="Texture2D" uid="uid://dn82hqq16od66" path="res://assets/backgrounds/bg29.png" id="10_u4o5j"]
+[ext_resource type="Texture2D" uid="uid://ba4wkadfuxqqj" path="res://assets/backgrounds/bg210.png" id="11_mf6y5"]
+[ext_resource type="Texture2D" uid="uid://ds1nq81jn8ebg" path="res://assets/backgrounds/bg211.png" id="12_vyuau"]
+[ext_resource type="Script" uid="uid://cab7o5gtj4pnl" path="res://ui/background.gd" id="13_cggdt"]
 
-[node name="Creation" type="Control" unique_id=866555154]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wa0l1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mbx1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_78o1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wqb2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kr6je")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cggdt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_luehv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mkpqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tfkxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_u4o5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mf6y5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vyuau")
+}],
+"loop": true,
+"name": &"bg",
+"speed": 2.0
+}]
+
+[node name="Creation" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,17 +69,15 @@ grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_vusna")
 
-[node name="BG" type="TextureRect" parent="." unique_id=807349373]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fkntm")
-stretch_mode = 6
+[node name="Background" type="AnimatedSprite2D" parent="."]
+z_index = -1
+texture_filter = 4
+sprite_frames = SubResource("SpriteFrames_wa0l1")
+animation = &"bg"
+centered = false
+script = ExtResource("13_cggdt")
 
-[node name="SliderContainer" type="VBoxContainer" parent="." unique_id=760379179]
+[node name="SliderContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 131.0
 offset_top = 125.0
@@ -35,11 +85,11 @@ offset_right = 685.0
 offset_bottom = 693.0
 alignment = 1
 
-[node name="SpeedLabelContainer" type="GridContainer" parent="SliderContainer" unique_id=1086003814]
+[node name="SpeedLabelContainer" type="GridContainer" parent="SliderContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="Speed" type="RichTextLabel" parent="SliderContainer/SpeedLabelContainer" unique_id=1893297790]
+[node name="Speed" type="RichTextLabel" parent="SliderContainer/SpeedLabelContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -49,7 +99,7 @@ text = "[font_size=45]Speed[/font_size]"
 fit_content = true
 vertical_alignment = 2
 
-[node name="SpeedValue" type="RichTextLabel" parent="SliderContainer/SpeedLabelContainer" unique_id=1694966692]
+[node name="SpeedValue" type="RichTextLabel" parent="SliderContainer/SpeedLabelContainer"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -60,17 +110,17 @@ fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="SpeedSlider" type="HSlider" parent="SliderContainer" unique_id=999440617]
+[node name="SpeedSlider" type="HSlider" parent="SliderContainer"]
 layout_mode = 2
 theme = ExtResource("1_lotrb")
 min_value = 1.0
 value = 1.0
 
-[node name="MassLabelContainer" type="GridContainer" parent="SliderContainer" unique_id=256549846]
+[node name="MassLabelContainer" type="GridContainer" parent="SliderContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="Mass" type="RichTextLabel" parent="SliderContainer/MassLabelContainer" unique_id=431006261]
+[node name="Mass" type="RichTextLabel" parent="SliderContainer/MassLabelContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("1_lotrb")
@@ -78,7 +128,7 @@ bbcode_enabled = true
 text = "[font_size=45]Mass[/font_size]"
 fit_content = true
 
-[node name="MassValue" type="RichTextLabel" parent="SliderContainer/MassLabelContainer" unique_id=1307242866]
+[node name="MassValue" type="RichTextLabel" parent="SliderContainer/MassLabelContainer"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -89,17 +139,17 @@ fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="MassSlider" type="HSlider" parent="SliderContainer" unique_id=582932542]
+[node name="MassSlider" type="HSlider" parent="SliderContainer"]
 layout_mode = 2
 theme = ExtResource("1_lotrb")
 min_value = 1.0
 value = 1.0
 
-[node name="HealthLabelContainer" type="GridContainer" parent="SliderContainer" unique_id=1091777691]
+[node name="HealthLabelContainer" type="GridContainer" parent="SliderContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="Health" type="RichTextLabel" parent="SliderContainer/HealthLabelContainer" unique_id=995544023]
+[node name="Health" type="RichTextLabel" parent="SliderContainer/HealthLabelContainer"]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -109,7 +159,7 @@ text = "[font_size=45]Health[/font_size]"
 fit_content = true
 vertical_alignment = 2
 
-[node name="HealthValue" type="RichTextLabel" parent="SliderContainer/HealthLabelContainer" unique_id=1956473987]
+[node name="HealthValue" type="RichTextLabel" parent="SliderContainer/HealthLabelContainer"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -120,20 +170,20 @@ fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="HealthSlider" type="HSlider" parent="SliderContainer" unique_id=1410190916]
+[node name="HealthSlider" type="HSlider" parent="SliderContainer"]
 layout_mode = 2
 theme = ExtResource("1_lotrb")
 min_value = 1.0
 value = 1.0
 
-[node name="Planet Selector" type="Control" parent="." unique_id=1041985243]
+[node name="Planet Selector" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 950.0
 offset_right = 1731.0
 offset_bottom = 823.0
 script = ExtResource("3_vusna")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Planet Selector" unique_id=159931920]
+[node name="HBoxContainer" type="HBoxContainer" parent="Planet Selector"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
@@ -142,7 +192,7 @@ offset_right = 2110.0
 offset_bottom = 542.49994
 scale = Vector2(0.4, 0.4)
 
-[node name="Planet" type="TextureRect" parent="Planet Selector" unique_id=1653421733]
+[node name="Planet" type="TextureRect" parent="Planet Selector"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 0
 offset_left = 140.0
@@ -152,7 +202,7 @@ offset_bottom = 746.0
 size_flags_vertical = 3
 stretch_mode = 4
 
-[node name="LeftButton" type="TextureButton" parent="Planet Selector" unique_id=516673160]
+[node name="LeftButton" type="TextureButton" parent="Planet Selector"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
 offset_left = 239.0
@@ -164,7 +214,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("4_451v5")
 
-[node name="RightButton" type="TextureButton" parent="Planet Selector" unique_id=144966398]
+[node name="RightButton" type="TextureButton" parent="Planet Selector"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
 offset_left = 415.0
@@ -176,7 +226,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource("5_fkntm")
 
-[node name="Name" type="RichTextLabel" parent="Planet Selector" unique_id=1329680754]
+[node name="Name" type="RichTextLabel" parent="Planet Selector"]
 layout_mode = 0
 offset_left = -28.0
 offset_top = 871.0
@@ -191,7 +241,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Go" type="Button" parent="." unique_id=1231940784]
+[node name="Go" type="Button" parent="."]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 731.0
