@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://s3ly1a2ffail"]
+[gd_scene format=3 uid="uid://c1axn8vp1hgad"]
 
 [ext_resource type="PackedScene" uid="uid://dgw4tkllph668" path="res://planets/ball.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://chg7plb5adtaj" path="res://player.gd" id="2_i3pqv"]
@@ -10,8 +10,6 @@ size = Vector2(4400, 100)
 [node name="Player" unique_id=612661867 instance=ExtResource("1_4flbx")]
 script = ExtResource("2_i3pqv")
 planet_name = "Player"
-planet_speed = 1000.0
-max_health = 100.0
 rotation_speed = 2.5
 radius = 200.0
 damage_multiplier = 0.003

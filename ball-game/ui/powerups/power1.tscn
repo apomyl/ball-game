@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b301r0jgi3n0f"]
+[gd_scene format=3 uid="uid://b301r0jgi3n0f"]
 
 [ext_resource type="Texture2D" uid="uid://dl8ji4d5vktpk" path="res://assets/backgrounds/bg110.png" id="1_oc3xf"]
 [ext_resource type="Script" uid="uid://chx1bhib1wwbr" path="res://ui/powerups/power_1.gd" id="2_gak0k"]
@@ -27,7 +27,7 @@ frame_5/duration = 1.0
 frame_6/texture = ExtResource("7_8nsf1")
 frame_6/duration = 1.0
 
-[node name="Power1" type="TextureRect"]
+[node name="Power1" type="TextureRect" unique_id=1817783434]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -37,14 +37,15 @@ texture = SubResource("AnimatedTexture_qlwwu")
 stretch_mode = 6
 script = ExtResource("2_gak0k")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=166522603]
 layout_mode = 0
 offset_left = 167.0
 offset_top = 212.0
 offset_right = 603.0
 offset_bottom = 876.0
 
-[node name="RichTextLabel" type="TextureRect" parent="Button"]
+[node name="RichTextLabel" type="TextureRect" parent="Button" unique_id=544506586]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,14 +57,15 @@ theme = ExtResource("3_b61td")
 expand_mode = 4
 stretch_mode = 6
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="Button" parent="." unique_id=2081552208]
 layout_mode = 0
 offset_left = 757.0
 offset_top = 208.0
 offset_right = 1193.0
 offset_bottom = 872.0
 
-[node name="RichTextLabel" type="TextureRect" parent="Button2"]
+[node name="RichTextLabel" type="TextureRect" parent="Button2" unique_id=1774808294]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,14 +77,15 @@ theme = ExtResource("3_b61td")
 expand_mode = 4
 stretch_mode = 6
 
-[node name="Button3" type="Button" parent="."]
+[node name="Button3" type="Button" parent="." unique_id=1109338919]
 layout_mode = 0
 offset_left = 1330.0
 offset_top = 212.0
 offset_right = 1766.0
 offset_bottom = 876.0
 
-[node name="RichTextLabel" type="TextureRect" parent="Button3"]
+[node name="RichTextLabel" type="TextureRect" parent="Button3" unique_id=2039539757]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

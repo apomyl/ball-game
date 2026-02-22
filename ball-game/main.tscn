@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://die44hlvewhfn" path="res://walls.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dd4pgvypfjunb" path="res://planets/jupiter.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://cqibjq4s7pfqx" path="res://player.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c1axn8vp1hgad" path="res://player.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" path="res://planets/mars.tscn" id="5_lquwl"]
 
 [node name="Node2D" type="Node2D" unique_id=2104498476]
