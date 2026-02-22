@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d3cuvtmubtysm"]
+[gd_scene format=3 uid="uid://dd4pgvypfjunb"]
 
 [ext_resource type="Script" uid="uid://o4hjocolmicl" path="res://planets/jupiter.gd" id="1_7oexv"]
 [ext_resource type="Texture2D" uid="uid://u7yme26fhc74" path="res://assets/jupiter.png" id="2_7oexv"]
