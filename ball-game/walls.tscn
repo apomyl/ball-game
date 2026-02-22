@@ -1,72 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://die44hlvewhfn"]
-
-[ext_resource type="Texture2D" uid="uid://clfjac5jn76kx" path="res://assets/backgrounds/bg31.png" id="1_pcp3h"]
-[ext_resource type="Texture2D" uid="uid://bj3josw42jefq" path="res://assets/backgrounds/bg32.png" id="2_q2dr5"]
-[ext_resource type="Texture2D" uid="uid://ko53oyuqjlsk" path="res://assets/backgrounds/bg33.png" id="3_37dt0"]
-[ext_resource type="Texture2D" uid="uid://cvr05uaxd82a6" path="res://assets/backgrounds/bg34.png" id="4_cc55r"]
-[ext_resource type="Texture2D" uid="uid://btjud7m7wig7h" path="res://assets/backgrounds/bg35.png" id="5_1xhue"]
-[ext_resource type="Texture2D" uid="uid://dp3y5bylw46g8" path="res://assets/backgrounds/bg36.png" id="6_5boxt"]
-[ext_resource type="Texture2D" uid="uid://bvcdydui4vufp" path="res://assets/backgrounds/bg37.png" id="7_514ik"]
-[ext_resource type="Texture2D" uid="uid://c01loj75ix0hg" path="res://assets/backgrounds/bg38.png" id="8_oy78j"]
-[ext_resource type="Texture2D" uid="uid://culndk4tf5udg" path="res://assets/backgrounds/bg39.png" id="9_14hr1"]
-[ext_resource type="Texture2D" uid="uid://1ejvrsiagstc" path="res://assets/backgrounds/bg310.png" id="10_wkm88"]
-[ext_resource type="Texture2D" uid="uid://cm8ffjanuasge" path="res://assets/backgrounds/bg311.png" id="11_rda77"]
-[ext_resource type="Script" uid="uid://cab7o5gtj4pnl" path="res://ui/background.gd" id="12_n424q"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_oelu8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_pcp3h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_q2dr5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_37dt0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_cc55r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_1xhue")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_5boxt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_514ik")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_oy78j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_14hr1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_wkm88")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_rda77")
-}],
-"loop": true,
-"name": &"bg",
-"speed": 2.0
-}]
+[gd_scene load_steps=2 format=3 uid="uid://die44hlvewhfn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oelu8"]
 friction = 0.0
 bounce = 1.0
 
 [node name="Walls" type="Node2D"]
-
-[node name="Background" type="AnimatedSprite2D" parent="."]
-z_index = -1
-texture_filter = 4
-sprite_frames = SubResource("SpriteFrames_oelu8")
-animation = &"bg"
-centered = false
-script = ExtResource("12_n424q")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_oelu8")

@@ -1,20 +1,72 @@
-[gd_scene format=3 uid="uid://bxr63040mxn5v"]
+[gd_scene load_steps=16 format=3 uid="uid://bxr63040mxn5v"]
 
 [ext_resource type="Script" uid="uid://d1uewsr35ppac" path="res://ui/battles/battle.gd" id="1_7ye11"]
 [ext_resource type="PackedScene" uid="uid://die44hlvewhfn" path="res://walls.tscn" id="1_a1u14"]
+[ext_resource type="Texture2D" uid="uid://gl1jnche34o3" path="res://assets/backgrounds/bg31.png" id="2_q8wf0"]
+[ext_resource type="Texture2D" uid="uid://bo8t033fs10ke" path="res://assets/backgrounds/bg32.png" id="3_segax"]
+[ext_resource type="Texture2D" uid="uid://dq4vbqjq54qpg" path="res://assets/backgrounds/bg311.png" id="4_3kqpy"]
 [ext_resource type="PackedScene" uid="uid://s3ly1a2ffail" path="res://player.tscn" id="4_inopt"]
+[ext_resource type="Texture2D" uid="uid://cmm61ccjc6nlv" path="res://assets/backgrounds/bg33.png" id="5_k0c3a"]
+[ext_resource type="Texture2D" uid="uid://2k4068meimi3" path="res://assets/backgrounds/bg34.png" id="6_03nil"]
+[ext_resource type="Texture2D" uid="uid://bxhgahyts1qgb" path="res://assets/backgrounds/bg35.png" id="7_6b4ye"]
+[ext_resource type="Texture2D" uid="uid://brbsceiodmbf3" path="res://assets/backgrounds/bg36.png" id="8_4lxx8"]
+[ext_resource type="Texture2D" uid="uid://dks5p16ucxjqf" path="res://assets/backgrounds/bg37.png" id="9_jp3m4"]
+[ext_resource type="Texture2D" uid="uid://coav4cr4xo2mh" path="res://assets/backgrounds/bg38.png" id="10_m7jyk"]
+[ext_resource type="Texture2D" uid="uid://bjy0yhp782n3l" path="res://assets/backgrounds/bg39.png" id="11_mmlrf"]
+[ext_resource type="Texture2D" uid="uid://d20i6jet0yljb" path="res://assets/backgrounds/bg310.png" id="12_4u3my"]
 
-[node name="Battle" type="Node2D" unique_id=1170580095]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_njhxl"]
+frames = 11
+speed_scale = 2.0
+frame_0/texture = ExtResource("2_q8wf0")
+frame_1/texture = ExtResource("3_segax")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("5_k0c3a")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("6_03nil")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("7_6b4ye")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("8_4lxx8")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("9_jp3m4")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("10_m7jyk")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("11_mmlrf")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("12_4u3my")
+frame_9/duration = 1.0
+frame_10/texture = ExtResource("4_3kqpy")
+frame_10/duration = 1.0
+
+[node name="Battle" type="Node2D"]
 scale = Vector2(0.9957995, 1.0024515)
 script = ExtResource("1_7ye11")
 
-[node name="Walls" parent="." unique_id=1034601366 instance=ExtResource("1_a1u14")]
+[node name="Background" type="TextureRect" parent="."]
+z_index = -1
+custom_minimum_size = Vector2(1000, 1000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1993.3732
+offset_top = -1157.1632
+offset_right = 2120.9092
+offset_bottom = 1223.0018
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_njhxl")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Walls" parent="." instance=ExtResource("1_a1u14")]
 position = Vector2(96.404945, 52.87039)
 scale = Vector2(1.199344, 1.2366047)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=903737797]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(3, 0)
 zoom = Vector2(0.5, 0.5)
 
-[node name="Player" parent="." unique_id=1980910126 instance=ExtResource("4_inopt")]
+[node name="Player" parent="." instance=ExtResource("4_inopt")]
 position = Vector2(-1486, 24)
